@@ -184,3 +184,8 @@ denizbank/
 test_aml.py
 temp/
 test/
+
+#promptflow
+quality/eval_flow/.promptflow/
+quality/eval_flow/*/.promptflow/
+quality/index_flow/.promptflow/
