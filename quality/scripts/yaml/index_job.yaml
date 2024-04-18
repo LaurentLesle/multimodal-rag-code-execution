@@ -1,0 +1,7 @@
+$schema: https://azuremlschemas.azureedge.net/promptflow/latest/Run.schema.json
+flow: ../../index_flow
+data: ../../data/index_test_data.jsonl
+column_mapping:
+  index: ${data.index_one}
+  question: ${data.question}
+

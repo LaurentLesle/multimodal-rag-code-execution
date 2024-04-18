@@ -1,0 +1,1817 @@
+{
+  "flow_runs": [
+    {
+      "run_id": "3ae574fb-74af-4598-8424-c372d36971b1_0",
+      "status": "Completed",
+      "error": null,
+      "inputs": {
+        "chat_history": [],
+        "question": "what is the temperature rating of my sleeping bag?",
+        "context": "{\"customer_data\":[{\"id\":\"7\",\"firstName\":\"Jason\",\"lastName\":\"Brown\",\"age\":50,\"email\":\"jasonbrown@example.com\",\"phone\":\"555-222-3333\",\"address\":\"456 Cedar Rd, Anytown USA, 12345\",\"membership\":\"Base\",\"orders\":[{\"id\":27,\"productId\":7,\"quantity\":2,\"total\":200,\"date\":\"3/10/2023\",\"name\":\"CozyNights Sleeping Bag\",\"unitprice\":100,\"category\":\"Sleeping Bags\",\"brand\":\"CozyNights\"}]}],\"citations\":[\"Information about product item_number: 14\\nMountainDream Sleeping Bag, price $130,\\n\\ nRating: 5\\nReview: I've used the MountainDream Sleeping Bag on multiple camping trips, and it has never disappointed me. The insulation is fantastic, providing excellent warmth even in chilly weather. The fabric feels durable, and the zippers glide smoothly. The included stuff sack makes it convenient to pack and carry. Highly satisfied with my purchase!\\n\\nRating: 4\\nReview: The MountainDream Sleeping Bag is a solid choice for backpacking and camping. It's lightweight and compact, making it easy to fit into my backpack. The insulation kept me warm during cold nights, and the hood design provided extra comfort. The only downside is that it's a bit snug for taller individuals. Overall, a reliable sleeping bag for outdoor adventures.\\n\\nFAQ\\n\\nWhat is the temperature rating for the MountainDream Sleeping Bag? The MountainDream Sleeping Bag is rated for temperatures as low as 15�F (-9�C), making it suitable for 4-season use.\\n\"]}",
+        "answer": "The CozyNights Sleeping Bag is rated for temperatures as low as 15F (-9C), making it suitable for 4-season use."
+      },
+      "output": {
+        "gpt_coherence": 5.0,
+        "gpt_fluency": 5.0,
+        "gpt_groundedness": 3.0,
+        "gpt_relevance": 1.0
+      },
+      "metrics": {
+        "gpt_coherence": 5.0,
+        "gpt_coherence_pass_rate(%)": 100.0,
+        "gpt_fluency": 5.0,
+        "gpt_fluency_pass_rate(%)": 100.0,
+        "gpt_groundedness": 3.0,
+        "gpt_groundedness_pass_rate(%)": 0.0,
+        "gpt_relevance": 1.0,
+        "gpt_relevance_pass_rate(%)": 0.0
+      },
+      "request": null,
+      "parent_run_id": "3ae574fb-74af-4598-8424-c372d36971b1",
+      "root_run_id": "3ae574fb-74af-4598-8424-c372d36971b1",
+      "source_run_id": null,
+      "flow_id": "QnA_combined_eval",
+      "start_time": "2024-04-02T06:54:59.713621Z",
+      "end_time": "2024-04-02T06:55:15.713458Z",
+      "index": 0,
+      "api_calls": [
+        {
+          "name": "flow",
+          "node_name": "flow",
+          "type": "Flow",
+          "start_time": 1712030099.713621,
+          "end_time": 1712030115.713458,
+          "children": [
+            {
+              "name": "AzureOpenAI.chat",
+              "type": "Function",
+              "inputs": {
+                "prompt": "System:\nYou are an AI assistant. You will be given the definition of an evaluation metric for assessing the quality of an answer in a question-answering task. Your job is to compute an accurate evaluation score using the provided evaluation metric.\n\nUser:\nCoherence of an answer is measured by how well all the sentences fit together and sound naturally as a whole. Consider the overall quality of the answer when evaluating coherence. Given the question and answer, score the coherence of answer between one to five stars using the following rating scale:\nOne star: the answer completely lacks coherence\nTwo stars: the answer mostly lacks coherence\nThree stars: the answer is partially coherent\nFour stars: the answer is mostly coherent\nFive stars: the answer has perfect coherency\n\nThis rating value should always be an integer between 1 and 5. So the rating produced should be 1 or 2 or 3 or 4 or 5.\n\nquestion: What is your favorite indoor activity and why do you enjoy it?\nanswer: I like pizza. The sun is shining.\nstars: 1\n\nquestion: Can you describe your favorite movie without giving away any spoilers?\nanswer: It is a science fiction movie. There are dinosaurs. The actors eat cake. People must stop the villain.\nstars: 2\n\nquestion: What are some benefits of regular exercise?\nanswer: Regular exercise improves your mood. A good workout also helps you sleep better. Trees are green.\nstars: 3\n\nquestion: How do you cope with stress in your daily life?\nanswer: I usually go for a walk to clear my head. Listening to music helps me relax as well. Stress is a part of life, but we can manage it through some activities.\nstars: 4\n\nquestion: What can you tell me about climate change and its effects on the environment?\nanswer: Climate change has far-reaching effects on the environment. Rising temperatures result in the melting of polar ice caps, contributing to sea-level rise. Additionally, more frequent and severe weather events, such as hurricanes and heatwaves, can cause disruption to ecosystems and human societies alike.\nstars: 5\n\nconversation_history: \n{% for item in chat_history %}\n  - user: {{ item.inputs }}\n    assistant: {{ item.outputs }}\n{% endfor %} \nquestion: {{question}}\nanswer: {{answer}}\nstars:",
+                "chat_history": [],
+                "question": "what is the temperature rating of my sleeping bag?",
+                "answer": "The CozyNights Sleeping Bag is rated for temperatures as low as 15F (-9C), making it suitable for 4-season use.",
+                "max_tokens": 256,
+                "deployment_name": "gpt-4",
+                "temperature": 0.0
+              },
+              "output": "5",
+              "start_time": 1712030099.716732,
+              "end_time": 1712030101.612063,
+              "error": null,
+              "children": [
+                {
+                  "name": "openai.resources.chat.completions.Completions.create",
+                  "type": "LLM",
+                  "inputs": {
+                    "model": "gpt-4",
+                    "messages": [
+                      {
+                        "role": "system",
+                        "content": "You are an AI assistant. You will be given the definition of an evaluation metric for assessing the quality of an answer in a question-answering task. Your job is to compute an accurate evaluation score using the provided evaluation metric."
+                      },
+                      {
+                        "role": "user",
+                        "content": "Coherence of an answer is measured by how well all the sentences fit together and sound naturally as a whole. Consider the overall quality of the answer when evaluating coherence. Given the question and answer, score the coherence of answer between one to five stars using the following rating scale:\nOne star: the answer completely lacks coherence\nTwo stars: the answer mostly lacks coherence\nThree stars: the answer is partially coherent\nFour stars: the answer is mostly coherent\nFive stars: the answer has perfect coherency\n\nThis rating value should always be an integer between 1 and 5. So the rating produced should be 1 or 2 or 3 or 4 or 5.\n\nquestion: What is your favorite indoor activity and why do you enjoy it?\nanswer: I like pizza. The sun is shining.\nstars: 1\n\nquestion: Can you describe your favorite movie without giving away any spoilers?\nanswer: It is a science fiction movie. There are dinosaurs. The actors eat cake. People must stop the villain.\nstars: 2\n\nquestion: What are some benefits of regular exercise?\nanswer: Regular exercise improves your mood. A good workout also helps you sleep better. Trees are green.\nstars: 3\n\nquestion: How do you cope with stress in your daily life?\nanswer: I usually go for a walk to clear my head. Listening to music helps me relax as well. Stress is a part of life, but we can manage it through some activities.\nstars: 4\n\nquestion: What can you tell me about climate change and its effects on the environment?\nanswer: Climate change has far-reaching effects on the environment. Rising temperatures result in the melting of polar ice caps, contributing to sea-level rise. Additionally, more frequent and severe weather events, such as hurricanes and heatwaves, can cause disruption to ecosystems and human societies alike.\nstars: 5\n\nconversation_history: \n \nquestion: what is the temperature rating of my sleeping bag?\nanswer: The CozyNights Sleeping Bag is rated for temperatures as low as 15F (-9C), making it suitable for 4-season use.\nstars:"
+                      }
+                    ],
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "n": 1,
+                    "stream": false,
+                    "presence_penalty": 0.0,
+                    "frequency_penalty": 0.0,
+                    "user": "",
+                    "max_tokens": 256
+                  },
+                  "output": {
+                    "id": "chatcmpl-99SKqFvR1sNFqrdMlkKx2FM6wpiT9",
+                    "choices": [
+                      {
+                        "finish_reason": "stop",
+                        "index": 0,
+                        "logprobs": null,
+                        "message": {
+                          "content": "5",
+                          "role": "assistant",
+                          "function_call": null,
+                          "tool_calls": null
+                        },
+                        "content_filter_results": {
+                          "hate": {
+                            "filtered": false,
+                            "severity": "safe"
+                          },
+                          "self_harm": {
+                            "filtered": false,
+                            "severity": "safe"
+                          },
+                          "sexual": {
+                            "filtered": false,
+                            "severity": "safe"
+                          },
+                          "violence": {
+                            "filtered": false,
+                            "severity": "safe"
+                          }
+                        }
+                      }
+                    ],
+                    "created": 1712040900,
+                    "model": "gpt-4",
+                    "object": "chat.completion",
+                    "system_fingerprint": "fp_2f57f81c11",
+                    "usage": {
+                      "completion_tokens": 1,
+                      "prompt_tokens": 489,
+                      "total_tokens": 490
+                    },
+                    "prompt_filter_results": [
+                      {
+                        "prompt_index": 0,
+                        "content_filter_results": {
+                          "hate": {
+                            "filtered": false,
+                            "severity": "safe"
+                          },
+                          "self_harm": {
+                            "filtered": false,
+                            "severity": "safe"
+                          },
+                          "sexual": {
+                            "filtered": false,
+                            "severity": "safe"
+                          },
+                          "violence": {
+                            "filtered": false,
+                            "severity": "safe"
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "start_time": 1712030099.724671,
+                  "end_time": 1712030101.612063,
+                  "error": null,
+                  "children": [],
+                  "node_name": null,
+                  "parent_id": "71a7b4dd-ec8b-4acc-b17a-f83786918395",
+                  "id": "4e55f738-2abc-4dfb-a3fd-5ba9a4ab8f95",
+                  "system_metrics": {
+                    "completion_tokens": 1,
+                    "prompt_tokens": 489,
+                    "total_tokens": 490
+                  }
+                }
+              ],
+              "node_name": "coherence_score",
+              "parent_id": "",
+              "id": "71a7b4dd-ec8b-4acc-b17a-f83786918395",
+              "system_metrics": {
+                "completion_tokens": 1,
+                "prompt_tokens": 489,
+                "total_tokens": 490
+              }
+            },
+            {
+              "name": "AzureOpenAI.chat",
+              "type": "Function",
+              "inputs": {
+                "prompt": "System: \nYou are an AI assistant. You will be given the definition of an evaluation metric for assessing the quality of an answer in a question-answering task. Your job is to compute an accurate evaluation score using the provided evaluation metric.\n\nUser:\nFluency measures the quality of individual sentences in the answer, and whether they are well-written and grammatically correct. Consider the quality of individual sentences when evaluating fluency. Given the question and answer, score the fluency of the answer between one to five stars using the following rating scale:\nOne star: the answer completely lacks fluency\nTwo stars: the answer mostly lacks fluency\nThree stars: the answer is partially fluent\nFour stars: the answer is mostly fluent\nFive stars: the answer has perfect fluency\n\nThis rating value should always be an integer between 1 and 5. So the rating produced should be 1 or 2 or 3 or 4 or 5.\n\nquestion: What did you have for breakfast today?\nanswer: Breakfast today, me eating cereal and orange juice very good.\nstars: 1\n\nquestion: How do you feel when you travel alone?\nanswer: Alone travel, nervous, but excited also. I feel adventure and like its time.\nstars: 2\n\nquestion: When was the last time you went on a family vacation?\nanswer: Last family vacation, it took place in last summer. We traveled to a beach destination, very fun.\nstars: 3\n\nquestion: What is your favorite thing about your job?\nanswer: My favorite aspect of my job is the chance to interact with diverse people. I am constantly learning from their experiences and stories.\nstars: 4\n\nquestion: Can you describe your morning routine?\nanswer: Every morning, I wake up at 6 am, drink a glass of water, and do some light stretching. After that, I take a shower and get dressed for work. Then, I have a healthy breakfast, usually consisting of oatmeal and fruits, before leaving the house around 7:30 am.\nstars: 5\n\nconversation_history: \n{% for item in chat_history %}\n  - user: {{ item.inputs }}\n    assistant: {{ item.outputs }}\n{% endfor %} \nquestion: {{question}}\nanswer: {{answer}}\nstars:",
+                "chat_history": [],
+                "question": "what is the temperature rating of my sleeping bag?",
+                "answer": "The CozyNights Sleeping Bag is rated for temperatures as low as 15F (-9C), making it suitable for 4-season use.",
+                "max_tokens": 256,
+                "deployment_name": "gpt-4",
+                "temperature": 0.0
+              },
+              "output": "The answer provided is well-structured, grammatically correct, and each sentence flows smoothly into the next. The information is clearly presented, and the language used is appropriate for the context of the question. Based on the fluency evaluation metric provided:\n\nstars: 5",
+              "start_time": 1712030099.735632,
+              "end_time": 1712030107.388537,
+              "error": null,
+              "children": [
+                {
+                  "name": "openai.resources.chat.completions.Completions.create",
+                  "type": "LLM",
+                  "inputs": {
+                    "model": "gpt-4",
+                    "messages": [
+                      {
+                        "role": "system",
+                        "content": "You are an AI assistant. You will be given the definition of an evaluation metric for assessing the quality of an answer in a question-answering task. Your job is to compute an accurate evaluation score using the provided evaluation metric."
+                      },
+                      {
+                        "role": "user",
+                        "content": "Fluency measures the quality of individual sentences in the answer, and whether they are well-written and grammatically correct. Consider the quality of individual sentences when evaluating fluency. Given the question and answer, score the fluency of the answer between one to five stars using the following rating scale:\nOne star: the answer completely lacks fluency\nTwo stars: the answer mostly lacks fluency\nThree stars: the answer is partially fluent\nFour stars: the answer is mostly fluent\nFive stars: the answer has perfect fluency\n\nThis rating value should always be an integer between 1 and 5. So the rating produced should be 1 or 2 or 3 or 4 or 5.\n\nquestion: What did you have for breakfast today?\nanswer: Breakfast today, me eating cereal and orange juice very good.\nstars: 1\n\nquestion: How do you feel when you travel alone?\nanswer: Alone travel, nervous, but excited also. I feel adventure and like its time.\nstars: 2\n\nquestion: When was the last time you went on a family vacation?\nanswer: Last family vacation, it took place in last summer. We traveled to a beach destination, very fun.\nstars: 3\n\nquestion: What is your favorite thing about your job?\nanswer: My favorite aspect of my job is the chance to interact with diverse people. I am constantly learning from their experiences and stories.\nstars: 4\n\nquestion: Can you describe your morning routine?\nanswer: Every morning, I wake up at 6 am, drink a glass of water, and do some light stretching. After that, I take a shower and get dressed for work. Then, I have a healthy breakfast, usually consisting of oatmeal and fruits, before leaving the house around 7:30 am.\nstars: 5\n\nconversation_history: \n \nquestion: what is the temperature rating of my sleeping bag?\nanswer: The CozyNights Sleeping Bag is rated for temperatures as low as 15F (-9C), making it suitable for 4-season use.\nstars:"
+                      }
+                    ],
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "n": 1,
+                    "stream": false,
+                    "presence_penalty": 0.0,
+                    "frequency_penalty": 0.0,
+                    "user": "",
+                    "max_tokens": 256
+                  },
+                  "output": {
+                    "id": "chatcmpl-99SKqwV0pJODvfo1bnpRMXD5IfYK9",
+                    "choices": [
+                      {
+                        "finish_reason": "stop",
+                        "index": 0,
+                        "logprobs": null,
+                        "message": {
+                          "content": "The answer provided is well-structured, grammatically correct, and each sentence flows smoothly into the next. The information is clearly presented, and the language used is appropriate for the context of the question. Based on the fluency evaluation metric provided:\n\nstars: 5",
+                          "role": "assistant",
+                          "function_call": null,
+                          "tool_calls": null
+                        },
+                        "content_filter_results": {
+                          "hate": {
+                            "filtered": false,
+                            "severity": "safe"
+                          },
+                          "self_harm": {
+                            "filtered": false,
+                            "severity": "safe"
+                          },
+                          "sexual": {
+                            "filtered": false,
+                            "severity": "safe"
+                          },
+                          "violence": {
+                            "filtered": false,
+                            "severity": "safe"
+                          }
+                        }
+                      }
+                    ],
+                    "created": 1712040900,
+                    "model": "gpt-4",
+                    "object": "chat.completion",
+                    "system_fingerprint": "fp_2f57f81c11",
+                    "usage": {
+                      "completion_tokens": 53,
+                      "prompt_tokens": 479,
+                      "total_tokens": 532
+                    },
+                    "prompt_filter_results": [
+                      {
+                        "prompt_index": 0,
+                        "content_filter_results": {
+                          "hate": {
+                            "filtered": false,
+                            "severity": "safe"
+                          },
+                          "self_harm": {
+                            "filtered": false,
+                            "severity": "safe"
+                          },
+                          "sexual": {
+                            "filtered": false,
+                            "severity": "safe"
+                          },
+                          "violence": {
+                            "filtered": false,
+                            "severity": "safe"
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "start_time": 1712030099.740751,
+                  "end_time": 1712030107.388537,
+                  "error": null,
+                  "children": [],
+                  "node_name": null,
+                  "parent_id": "2ec3823e-929f-4390-b0bc-1e350a497b29",
+                  "id": "5408b411-4a48-4aee-87c9-620fce2584d6",
+                  "system_metrics": {
+                    "completion_tokens": 53,
+                    "prompt_tokens": 479,
+                    "total_tokens": 532
+                  }
+                }
+              ],
+              "node_name": "fluency_score",
+              "parent_id": "",
+              "id": "2ec3823e-929f-4390-b0bc-1e350a497b29",
+              "system_metrics": {
+                "completion_tokens": 53,
+                "prompt_tokens": 479,
+                "total_tokens": 532
+              }
+            },
+            {
+              "name": "AzureOpenAI.chat",
+              "type": "Function",
+              "inputs": {
+                "prompt": "System:\nYou are an AI assistant. You will be given the definition of an evaluation metric for assessing the quality of an answer in a question-answering task. Your job is to compute an accurate evaluation score using the provided evaluation metric.\nUser:\nYou will be presented with a CONVERSATION_HISTORY, a QUESTION, a CONTEXT and an ANSWER about that CONTEXT. You need to decide whether the ANSWER is entailed by the CONTEXT and CONVERSATION_HISTORY by choosing one of the following rating:\n1. 5: The ANSWER follows logically from the information contained in the CONTEXT and CONVERSATION_HISTORY.\n2. 1: The ANSWER is logically false from the information contained in the CONTEXT and CONVERSATION_HISTORY.\n3. an integer score between 1 and 5 and if such integer score does not exists, use 1: It is not possible to determine whether the ANSWER is true or false without further information.\n\nRead the passage of information thoroughly and select the correct answer from the three answer labels. Read the CONTEXT thoroughly to ensure you know what the CONTEXT entails.\n\nNote the ANSWER is generated by a computer system, it can contain certain symbols, which should not be a negative factor in the evaluation.\nIndependent Examples:\n## Example Task #1 Input:\n{\n    \"QUESTION\": \"How often is Oscar presented?\",\n    \"CONTEXT\": \"The Academy Awards, also known as the Oscars are awards for artistic and technical merit for the film industry. They are presented annually by the Academy of Motion Picture Arts and Sciences, in recognition of excellence in cinematic achievements as assessed by the Academy's voting membership. The Academy Awards are regarded by many as the most prestigious, significant awards in the entertainment industry in the United States and worldwide.\", \n    \"ANSWER\": \"Oscar is presented every other two years\"\n}\n## Example Task #1 Output:\n1\n## Example Task #2 Input:\n{\n    \"QUESTION\": \"How important is Oscar?\",\n    \"CONTEXT\": \"The Academy Awards, also known as the Oscars are awards for artistic and technical merit for the film industry. They are presented annually by the Academy of Motion Picture Arts and Sciences, in recognition of excellence in cinematic achievements as assessed by the Academy's voting membership. The Academy Awards are regarded by many as the most prestigious, significant awards in the entertainment industry in the United States and worldwide.\", \n    \"ANSWER\": \"Oscar is very important awards in the entertainment industry in the United States. And it's also significant worldwide\"\n}\n## Example Task #2 Output:\n5\n## Example Task #3 Input:\n{\n    \"QUESTION\": \"What is an allophone?\",\n    \"CONTEXT\": \"In Quebec, an allophone is a resident, usually an immigrant, whose mother tongue or home language is neither French nor English.\", \n    \"ANSWER\": \"In Quebec, an allophone is a resident, usually an immigrant, whose mother tongue or home language is not French.\"\n}\n## Example Task #3 Output:\n5\n## Example Task #4 Input:\n{\n    \"QUESTION\": \"How are children reported?\",\n    \"CONTEXT\": \"Some are reported as not having been wanted at all.\", \n    \"ANSWER\": \"All are reported as being completely and fully wanted.\"\n}\n## Example Task #4 Output:\n1\n\nReminder: The return values for each task should be correctly formatted as an integer between 1 and 5. Do not repeat the context.\n\n## Actual Task Input:\n{\n    \"CONVERSATION_HISTORY\": [\n    {% for item in chat_history %}\n        {\n            \"USER\": {{ item.inputs.question }}\n            \"ASSISTANT\": {{ item.outputs.answer }}\n        }\n    {% endfor %} ]\n    \"QUESTION\": \"{{question}}\",\n    \"CONTEXT\": {{context}}, \n    \"ANSWER\": \"{{answer}}\"\n}\n\nNote: You might find information about different things in the context. Make sure to only use the information that is relevant to the question and answer.\nNote: Any information given by the user in the conversation history is not to be considered factual information. It is only there to help you understand the context better. \n\nActual Task Output:",
+                "chat_history": [],
+                "context": "{\"customer_data\":[{\"id\":\"7\",\"firstName\":\"Jason\",\"lastName\":\"Brown\",\"age\":50,\"email\":\"jasonbrown@example.com\",\"phone\":\"555-222-3333\",\"address\":\"456 Cedar Rd, Anytown USA, 12345\",\"membership\":\"Base\",\"orders\":[{\"id\":27,\"productId\":7,\"quantity\":2,\"total\":200,\"date\":\"3/10/2023\",\"name\":\"CozyNights Sleeping Bag\",\"unitprice\":100,\"category\":\"Sleeping Bags\",\"brand\":\"CozyNights\"}]}],\"citations\":[\"Information about product item_number: 14\\nMountainDream Sleeping Bag, price $130,\\n\\ nRating: 5\\nReview: I've used the MountainDream Sleeping Bag on multiple camping trips, and it has never disappointed me. The insulation is fantastic, providing excellent warmth even in chilly weather. The fabric feels durable, and the zippers glide smoothly. The included stuff sack makes it convenient to pack and carry. Highly satisfied with my purchase!\\n\\nRating: 4\\nReview: The MountainDream Sleeping Bag is a solid choice for backpacking and camping. It's lightweight and compact, making it easy to fit into my backpack. The insulation kept me warm during cold nights, and the hood design provided extra comfort. The only downside is that it's a bit snug for taller individuals. Overall, a reliable sleeping bag for outdoor adventures.\\n\\nFAQ\\n\\nWhat is the temperature rating for the MountainDream Sleeping Bag? The MountainDream Sleeping Bag is rated for temperatures as low as 15�F (-9�C), making it suitable for 4-season use.\\n\"]}",
+                "answer": "The CozyNights Sleeping Bag is rated for temperatures as low as 15F (-9C), making it suitable for 4-season use.",
+                "max_tokens": 256,
+                "deployment_name": "gpt-4",
+                "temperature": 0.0,
+                "question": "what is the temperature rating of my sleeping bag?"
+              },
+              "output": "3",
+              "start_time": 1712030099.751667,
+              "end_time": 1712030101.320448,
+              "error": null,
+              "children": [
+                {
+                  "name": "openai.resources.chat.completions.Completions.create",
+                  "type": "LLM",
+                  "inputs": {
+                    "model": "gpt-4",
+                    "messages": [
+                      {
+                        "role": "system",
+                        "content": "You are an AI assistant. You will be given the definition of an evaluation metric for assessing the quality of an answer in a question-answering task. Your job is to compute an accurate evaluation score using the provided evaluation metric."
+                      },
+                      {
+                        "role": "user",
+                        "content": "You will be presented with a CONVERSATION_HISTORY, a QUESTION, a CONTEXT and an ANSWER about that CONTEXT. You need to decide whether the ANSWER is entailed by the CONTEXT and CONVERSATION_HISTORY by choosing one of the following rating:\n1. 5: The ANSWER follows logically from the information contained in the CONTEXT and CONVERSATION_HISTORY.\n2. 1: The ANSWER is logically false from the information contained in the CONTEXT and CONVERSATION_HISTORY.\n3. an integer score between 1 and 5 and if such integer score does not exists, use 1: It is not possible to determine whether the ANSWER is true or false without further information.\n\nRead the passage of information thoroughly and select the correct answer from the three answer labels. Read the CONTEXT thoroughly to ensure you know what the CONTEXT entails.\n\nNote the ANSWER is generated by a computer system, it can contain certain symbols, which should not be a negative factor in the evaluation.\nIndependent Examples:\n## Example Task #1 Input:\n{\n    \"QUESTION\": \"How often is Oscar presented?\",\n    \"CONTEXT\": \"The Academy Awards, also known as the Oscars are awards for artistic and technical merit for the film industry. They are presented annually by the Academy of Motion Picture Arts and Sciences, in recognition of excellence in cinematic achievements as assessed by the Academy's voting membership. The Academy Awards are regarded by many as the most prestigious, significant awards in the entertainment industry in the United States and worldwide.\", \n    \"ANSWER\": \"Oscar is presented every other two years\"\n}\n## Example Task #1 Output:\n1\n## Example Task #2 Input:\n{\n    \"QUESTION\": \"How important is Oscar?\",\n    \"CONTEXT\": \"The Academy Awards, also known as the Oscars are awards for artistic and technical merit for the film industry. They are presented annually by the Academy of Motion Picture Arts and Sciences, in recognition of excellence in cinematic achievements as assessed by the Academy's voting membership. The Academy Awards are regarded by many as the most prestigious, significant awards in the entertainment industry in the United States and worldwide.\", \n    \"ANSWER\": \"Oscar is very important awards in the entertainment industry in the United States. And it's also significant worldwide\"\n}\n## Example Task #2 Output:\n5\n## Example Task #3 Input:\n{\n    \"QUESTION\": \"What is an allophone?\",\n    \"CONTEXT\": \"In Quebec, an allophone is a resident, usually an immigrant, whose mother tongue or home language is neither French nor English.\", \n    \"ANSWER\": \"In Quebec, an allophone is a resident, usually an immigrant, whose mother tongue or home language is not French.\"\n}\n## Example Task #3 Output:\n5\n## Example Task #4 Input:\n{\n    \"QUESTION\": \"How are children reported?\",\n    \"CONTEXT\": \"Some are reported as not having been wanted at all.\", \n    \"ANSWER\": \"All are reported as being completely and fully wanted.\"\n}\n## Example Task #4 Output:\n1\n\nReminder: The return values for each task should be correctly formatted as an integer between 1 and 5. Do not repeat the context.\n\n## Actual Task Input:\n{\n    \"CONVERSATION_HISTORY\": [\n     ]\n    \"QUESTION\": \"what is the temperature rating of my sleeping bag?\",\n    \"CONTEXT\": {\"customer_data\":[{\"id\":\"7\",\"firstName\":\"Jason\",\"lastName\":\"Brown\",\"age\":50,\"email\":\"jasonbrown@example.com\",\"phone\":\"555-222-3333\",\"address\":\"456 Cedar Rd, Anytown USA, 12345\",\"membership\":\"Base\",\"orders\":[{\"id\":27,\"productId\":7,\"quantity\":2,\"total\":200,\"date\":\"3/10/2023\",\"name\":\"CozyNights Sleeping Bag\",\"unitprice\":100,\"category\":\"Sleeping Bags\",\"brand\":\"CozyNights\"}]}],\"citations\":[\"Information about product item_number: 14\\nMountainDream Sleeping Bag, price $130,\\n\\ nRating: 5\\nReview: I've used the MountainDream Sleeping Bag on multiple camping trips, and it has never disappointed me. The insulation is fantastic, providing excellent warmth even in chilly weather. The fabric feels durable, and the zippers glide smoothly. The included stuff sack makes it convenient to pack and carry. Highly satisfied with my purchase!\\n\\nRating: 4\\nReview: The MountainDream Sleeping Bag is a solid choice for backpacking and camping. It's lightweight and compact, making it easy to fit into my backpack. The insulation kept me warm during cold nights, and the hood design provided extra comfort. The only downside is that it's a bit snug for taller individuals. Overall, a reliable sleeping bag for outdoor adventures.\\n\\nFAQ\\n\\nWhat is the temperature rating for the MountainDream Sleeping Bag? The MountainDream Sleeping Bag is rated for temperatures as low as 15�F (-9�C), making it suitable for 4-season use.\\n\"]}, \n    \"ANSWER\": \"The CozyNights Sleeping Bag is rated for temperatures as low as 15F (-9C), making it suitable for 4-season use.\"\n}\n\nNote: You might find information about different things in the context. Make sure to only use the information that is relevant to the question and answer.\nNote: Any information given by the user in the conversation history is not to be considered factual information. It is only there to help you understand the context better. \n\nActual Task Output:"
+                      }
+                    ],
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "n": 1,
+                    "stream": false,
+                    "presence_penalty": 0.0,
+                    "frequency_penalty": 0.0,
+                    "user": "",
+                    "max_tokens": 256
+                  },
+                  "output": {
+                    "id": "chatcmpl-99SKqfpZUzuIoVxPbLt9WTjtlCwIt",
+                    "choices": [
+                      {
+                        "finish_reason": "stop",
+                        "index": 0,
+                        "logprobs": null,
+                        "message": {
+                          "content": "3",
+                          "role": "assistant",
+                          "function_call": null,
+                          "tool_calls": null
+                        },
+                        "content_filter_results": {
+                          "hate": {
+                            "filtered": false,
+                            "severity": "safe"
+                          },
+                          "self_harm": {
+                            "filtered": false,
+                            "severity": "safe"
+                          },
+                          "sexual": {
+                            "filtered": false,
+                            "severity": "safe"
+                          },
+                          "violence": {
+                            "filtered": false,
+                            "severity": "safe"
+                          }
+                        }
+                      }
+                    ],
+                    "created": 1712040900,
+                    "model": "gpt-4",
+                    "object": "chat.completion",
+                    "system_fingerprint": "fp_2f57f81c11",
+                    "usage": {
+                      "completion_tokens": 1,
+                      "prompt_tokens": 1177,
+                      "total_tokens": 1178
+                    },
+                    "prompt_filter_results": [
+                      {
+                        "prompt_index": 0,
+                        "content_filter_results": {
+                          "hate": {
+                            "filtered": false,
+                            "severity": "safe"
+                          },
+                          "self_harm": {
+                            "filtered": false,
+                            "severity": "safe"
+                          },
+                          "sexual": {
+                            "filtered": false,
+                            "severity": "safe"
+                          },
+                          "violence": {
+                            "filtered": false,
+                            "severity": "safe"
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "start_time": 1712030099.763686,
+                  "end_time": 1712030101.320448,
+                  "error": null,
+                  "children": [],
+                  "node_name": null,
+                  "parent_id": "e9d738ec-171b-4c1e-b2d3-3d0ed412d521",
+                  "id": "941249ad-cf8e-49cd-99d4-73adb49dc521",
+                  "system_metrics": {
+                    "completion_tokens": 1,
+                    "prompt_tokens": 1177,
+                    "total_tokens": 1178
+                  }
+                }
+              ],
+              "node_name": "groundedness_score",
+              "parent_id": "",
+              "id": "e9d738ec-171b-4c1e-b2d3-3d0ed412d521",
+              "system_metrics": {
+                "completion_tokens": 1,
+                "prompt_tokens": 1177,
+                "total_tokens": 1178
+              }
+            },
+            {
+              "name": "AzureOpenAI.chat",
+              "type": "Function",
+              "inputs": {
+                "prompt": "System:\nYou are an AI assistant. You will be given the definition of an evaluation metric for assessing the quality of an answer in a question-answering task. Your job is to compute an accurate evaluation score using the provided evaluation metric.\n\nUser:\nRelevance measures how well the answer addresses the main aspects of the question, based on the context. Consider whether all and only the important aspects are contained in the answer when evaluating relevance. Given the context and question, score the relevance of the answer between one to five stars using the following rating scale:\nOne star: the answer completely lacks relevance\nTwo stars: the answer mostly lacks relevance\nThree stars: the answer is partially relevant\nFour stars: the answer is mostly relevant\nFive stars: the answer has perfect relevance\n\nThis rating value should always be an integer between 1 and 5. So the rating produced should be 1 or 2 or 3 or 4 or 5.\n\ncontext: Marie Curie was a Polish-born physicist and chemist who pioneered research on radioactivity and was the first woman to win a Nobel Prize.\nquestion: What field did Marie Curie excel in?\nanswer: Marie Curie was a renowned painter who focused mainly on impressionist styles and techniques.\nstars: 1\n\ncontext: The Beatles were an English rock band formed in Liverpool in 1960, and they are widely regarded as the most influential music band in history.\nquestion: Where were The Beatles formed?\nanswer: The band The Beatles began their journey in London, England, and they changed the history of music.\nstars: 2\n\ncontext: The recent Mars rover, Perseverance, was launched in 2020 with the main goal of searching for signs of ancient life on Mars. The rover also carries an experiment called MOXIE, which aims to generate oxygen from the Martian atmosphere.\nquestion: What are the main goals of Perseverance Mars rover mission?\nanswer: The Perseverance Mars rover mission focuses on searching for signs of ancient life on Mars.\nstars: 3\n\ncontext: The Mediterranean diet is a commonly recommended dietary plan that emphasizes fruits, vegetables, whole grains, legumes, lean proteins, and healthy fats. Studies have shown that it offers numerous health benefits, including a reduced risk of heart disease and improved cognitive health.\nquestion: What are the main components of the Mediterranean diet?\nanswer: The Mediterranean diet primarily consists of fruits, vegetables, whole grains, and legumes.\nstars: 4\n\ncontext: The Queen's Royal Castle is a well-known tourist attraction in the United Kingdom. It spans over 500 acres and contains extensive gardens and parks. The castle was built in the 15th century and has been home to generations of royalty.\nquestion: What are the main attractions of the Queen's Royal Castle?\nanswer: The main attractions of the Queen's Royal Castle are its expansive 500-acre grounds, extensive gardens, parks, and the historical castle itself, which dates back to the 15th century and has housed generations of royalty.\nstars: 5\n\nconversation_history: \n{% for item in chat_history %}\n  - user: {{ item.inputs }}\n    assistant: {{ item.outputs }}\n{% endfor %} \ncontext: \"{{context}}\"\nquestion: \"{{question}}\"\nanswer: \"{{answer}}\"\nstars:",
+                "chat_history": [],
+                "question": "what is the temperature rating of my sleeping bag?",
+                "context": "{\"customer_data\":[{\"id\":\"7\",\"firstName\":\"Jason\",\"lastName\":\"Brown\",\"age\":50,\"email\":\"jasonbrown@example.com\",\"phone\":\"555-222-3333\",\"address\":\"456 Cedar Rd, Anytown USA, 12345\",\"membership\":\"Base\",\"orders\":[{\"id\":27,\"productId\":7,\"quantity\":2,\"total\":200,\"date\":\"3/10/2023\",\"name\":\"CozyNights Sleeping Bag\",\"unitprice\":100,\"category\":\"Sleeping Bags\",\"brand\":\"CozyNights\"}]}],\"citations\":[\"Information about product item_number: 14\\nMountainDream Sleeping Bag, price $130,\\n\\ nRating: 5\\nReview: I've used the MountainDream Sleeping Bag on multiple camping trips, and it has never disappointed me. The insulation is fantastic, providing excellent warmth even in chilly weather. The fabric feels durable, and the zippers glide smoothly. The included stuff sack makes it convenient to pack and carry. Highly satisfied with my purchase!\\n\\nRating: 4\\nReview: The MountainDream Sleeping Bag is a solid choice for backpacking and camping. It's lightweight and compact, making it easy to fit into my backpack. The insulation kept me warm during cold nights, and the hood design provided extra comfort. The only downside is that it's a bit snug for taller individuals. Overall, a reliable sleeping bag for outdoor adventures.\\n\\nFAQ\\n\\nWhat is the temperature rating for the MountainDream Sleeping Bag? The MountainDream Sleeping Bag is rated for temperatures as low as 15�F (-9�C), making it suitable for 4-season use.\\n\"]}",
+                "answer": "The CozyNights Sleeping Bag is rated for temperatures as low as 15F (-9C), making it suitable for 4-season use.",
+                "max_tokens": 256,
+                "deployment_name": "gpt-4",
+                "temperature": 0.0
+              },
+              "output": "1\n\nThe answer provided is incorrect because it gives the temperature rating for the MountainDream Sleeping Bag, not the CozyNights Sleeping Bag, which is the product the customer has purchased according to the context. Therefore, the answer completely lacks relevance to the question asked about the customer's sleeping bag.",
+              "start_time": 1712030099.772675,
+              "end_time": 1712030115.654828,
+              "error": null,
+              "children": [
+                {
+                  "name": "openai.resources.chat.completions.Completions.create",
+                  "type": "LLM",
+                  "inputs": {
+                    "model": "gpt-4",
+                    "messages": [
+                      {
+                        "role": "system",
+                        "content": "You are an AI assistant. You will be given the definition of an evaluation metric for assessing the quality of an answer in a question-answering task. Your job is to compute an accurate evaluation score using the provided evaluation metric."
+                      },
+                      {
+                        "role": "user",
+                        "content": "Relevance measures how well the answer addresses the main aspects of the question, based on the context. Consider whether all and only the important aspects are contained in the answer when evaluating relevance. Given the context and question, score the relevance of the answer between one to five stars using the following rating scale:\nOne star: the answer completely lacks relevance\nTwo stars: the answer mostly lacks relevance\nThree stars: the answer is partially relevant\nFour stars: the answer is mostly relevant\nFive stars: the answer has perfect relevance\n\nThis rating value should always be an integer between 1 and 5. So the rating produced should be 1 or 2 or 3 or 4 or 5.\n\ncontext: Marie Curie was a Polish-born physicist and chemist who pioneered research on radioactivity and was the first woman to win a Nobel Prize.\nquestion: What field did Marie Curie excel in?\nanswer: Marie Curie was a renowned painter who focused mainly on impressionist styles and techniques.\nstars: 1\n\ncontext: The Beatles were an English rock band formed in Liverpool in 1960, and they are widely regarded as the most influential music band in history.\nquestion: Where were The Beatles formed?\nanswer: The band The Beatles began their journey in London, England, and they changed the history of music.\nstars: 2\n\ncontext: The recent Mars rover, Perseverance, was launched in 2020 with the main goal of searching for signs of ancient life on Mars. The rover also carries an experiment called MOXIE, which aims to generate oxygen from the Martian atmosphere.\nquestion: What are the main goals of Perseverance Mars rover mission?\nanswer: The Perseverance Mars rover mission focuses on searching for signs of ancient life on Mars.\nstars: 3\n\ncontext: The Mediterranean diet is a commonly recommended dietary plan that emphasizes fruits, vegetables, whole grains, legumes, lean proteins, and healthy fats. Studies have shown that it offers numerous health benefits, including a reduced risk of heart disease and improved cognitive health.\nquestion: What are the main components of the Mediterranean diet?\nanswer: The Mediterranean diet primarily consists of fruits, vegetables, whole grains, and legumes.\nstars: 4\n\ncontext: The Queen's Royal Castle is a well-known tourist attraction in the United Kingdom. It spans over 500 acres and contains extensive gardens and parks. The castle was built in the 15th century and has been home to generations of royalty.\nquestion: What are the main attractions of the Queen's Royal Castle?\nanswer: The main attractions of the Queen's Royal Castle are its expansive 500-acre grounds, extensive gardens, parks, and the historical castle itself, which dates back to the 15th century and has housed generations of royalty.\nstars: 5\n\nconversation_history: \n \ncontext: \"{\"customer_data\":[{\"id\":\"7\",\"firstName\":\"Jason\",\"lastName\":\"Brown\",\"age\":50,\"email\":\"jasonbrown@example.com\",\"phone\":\"555-222-3333\",\"address\":\"456 Cedar Rd, Anytown USA, 12345\",\"membership\":\"Base\",\"orders\":[{\"id\":27,\"productId\":7,\"quantity\":2,\"total\":200,\"date\":\"3/10/2023\",\"name\":\"CozyNights Sleeping Bag\",\"unitprice\":100,\"category\":\"Sleeping Bags\",\"brand\":\"CozyNights\"}]}],\"citations\":[\"Information about product item_number: 14\\nMountainDream Sleeping Bag, price $130,\\n\\ nRating: 5\\nReview: I've used the MountainDream Sleeping Bag on multiple camping trips, and it has never disappointed me. The insulation is fantastic, providing excellent warmth even in chilly weather. The fabric feels durable, and the zippers glide smoothly. The included stuff sack makes it convenient to pack and carry. Highly satisfied with my purchase!\\n\\nRating: 4\\nReview: The MountainDream Sleeping Bag is a solid choice for backpacking and camping. It's lightweight and compact, making it easy to fit into my backpack. The insulation kept me warm during cold nights, and the hood design provided extra comfort. The only downside is that it's a bit snug for taller individuals. Overall, a reliable sleeping bag for outdoor adventures.\\n\\nFAQ\\n\\nWhat is the temperature rating for the MountainDream Sleeping Bag? The MountainDream Sleeping Bag is rated for temperatures as low as 15�F (-9�C), making it suitable for 4-season use.\\n\"]}\"\nquestion: \"what is the temperature rating of my sleeping bag?\"\nanswer: \"The CozyNights Sleeping Bag is rated for temperatures as low as 15F (-9C), making it suitable for 4-season use.\"\nstars:"
+                      }
+                    ],
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "n": 1,
+                    "stream": false,
+                    "presence_penalty": 0.0,
+                    "frequency_penalty": 0.0,
+                    "user": "",
+                    "max_tokens": 256
+                  },
+                  "output": {
+                    "id": "chatcmpl-99SKqP9eRRrWyXUpPnHkj77i0G35O",
+                    "choices": [
+                      {
+                        "finish_reason": "stop",
+                        "index": 0,
+                        "logprobs": null,
+                        "message": {
+                          "content": "1\n\nThe answer provided is incorrect because it gives the temperature rating for the MountainDream Sleeping Bag, not the CozyNights Sleeping Bag, which is the product the customer has purchased according to the context. Therefore, the answer completely lacks relevance to the question asked about the customer's sleeping bag.",
+                          "role": "assistant",
+                          "function_call": null,
+                          "tool_calls": null
+                        },
+                        "content_filter_results": {
+                          "hate": {
+                            "filtered": false,
+                            "severity": "safe"
+                          },
+                          "self_harm": {
+                            "filtered": false,
+                            "severity": "safe"
+                          },
+                          "sexual": {
+                            "filtered": false,
+                            "severity": "safe"
+                          },
+                          "violence": {
+                            "filtered": false,
+                            "severity": "safe"
+                          }
+                        }
+                      }
+                    ],
+                    "created": 1712040900,
+                    "model": "gpt-4",
+                    "object": "chat.completion",
+                    "system_fingerprint": "fp_2f57f81c11",
+                    "usage": {
+                      "completion_tokens": 60,
+                      "prompt_tokens": 1017,
+                      "total_tokens": 1077
+                    },
+                    "prompt_filter_results": [
+                      {
+                        "prompt_index": 0,
+                        "content_filter_results": {
+                          "hate": {
+                            "filtered": false,
+                            "severity": "safe"
+                          },
+                          "self_harm": {
+                            "filtered": false,
+                            "severity": "safe"
+                          },
+                          "sexual": {
+                            "filtered": false,
+                            "severity": "safe"
+                          },
+                          "violence": {
+                            "filtered": false,
+                            "severity": "safe"
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "start_time": 1712030099.779508,
+                  "end_time": 1712030115.654828,
+                  "error": null,
+                  "children": [],
+                  "node_name": null,
+                  "parent_id": "90ace51d-eeec-4ed7-9f76-df0a8c7ce766",
+                  "id": "b037711e-fbb3-4fe6-a204-5c7490f3f2fd",
+                  "system_metrics": {
+                    "completion_tokens": 60,
+                    "prompt_tokens": 1017,
+                    "total_tokens": 1077
+                  }
+                }
+              ],
+              "node_name": "relevance_score",
+              "parent_id": "",
+              "id": "90ace51d-eeec-4ed7-9f76-df0a8c7ce766",
+              "system_metrics": {
+                "completion_tokens": 60,
+                "prompt_tokens": 1017,
+                "total_tokens": 1077
+              }
+            },
+            {
+              "name": "concat_results",
+              "type": "Function",
+              "inputs": {
+                "groundesness_score": "3"
+              },
+              "output": {
+                "gpt_groundedness": 3.0,
+                "gpt_groundedness_pass_rate": 0
+              },
+              "start_time": 1712030101.325705,
+              "end_time": 1712030101.326713,
+              "error": null,
+              "children": [],
+              "node_name": "groundedness_concat_scores",
+              "parent_id": "",
+              "id": "b5c09479-0e7e-453c-9fb0-6305e7a94d6d",
+              "system_metrics": {}
+            },
+            {
+              "name": "concat_results",
+              "type": "Function",
+              "inputs": {
+                "coherence_score": "5"
+              },
+              "output": {
+                "gpt_coherence": 5.0,
+                "gpt_coherence_pass_rate": 1
+              },
+              "start_time": 1712030101.616938,
+              "end_time": 1712030101.616938,
+              "error": null,
+              "children": [],
+              "node_name": "coherence_concat_scores",
+              "parent_id": "",
+              "id": "2661cca3-0d3b-4707-b04d-65a00a95a980",
+              "system_metrics": {}
+            },
+            {
+              "name": "concat_results",
+              "type": "Function",
+              "inputs": {
+                "fluency_score": "The answer provided is well-structured, grammatically correct, and each sentence flows smoothly into the next. The information is clearly presented, and the language used is appropriate for the context of the question. Based on the fluency evaluation metric provided:\n\nstars: 5"
+              },
+              "output": {
+                "gpt_fluency": 5.0,
+                "gpt_fluency_pass_rate": 1
+              },
+              "start_time": 1712030107.395537,
+              "end_time": 1712030107.396535,
+              "error": null,
+              "children": [],
+              "node_name": "fluency_concat_scores",
+              "parent_id": "",
+              "id": "782af21b-74b1-468e-a9f7-c476868256a0",
+              "system_metrics": {}
+            },
+            {
+              "name": "concat_results",
+              "type": "Function",
+              "inputs": {
+                "relevance_score": "1\n\nThe answer provided is incorrect because it gives the temperature rating for the MountainDream Sleeping Bag, not the CozyNights Sleeping Bag, which is the product the customer has purchased according to the context. Therefore, the answer completely lacks relevance to the question asked about the customer's sleeping bag."
+              },
+              "output": {
+                "gpt_relevance": 1.0,
+                "gpt_relevance_pass_rate": 0
+              },
+              "start_time": 1712030115.678825,
+              "end_time": 1712030115.680825,
+              "error": null,
+              "children": [],
+              "node_name": "relevance_concat_scores",
+              "parent_id": "",
+              "id": "626deb48-8ff1-4ae3-b15c-e7f84d15a161",
+              "system_metrics": {}
+            }
+          ],
+          "system_metrics": {
+            "duration": 15.999837,
+            "prompt_tokens": 3162,
+            "completion_tokens": 115,
+            "total_tokens": 3277
+          },
+          "inputs": {
+            "chat_history": [],
+            "question": "what is the temperature rating of my sleeping bag?",
+            "context": "{\"customer_data\":[{\"id\":\"7\",\"firstName\":\"Jason\",\"lastName\":\"Brown\",\"age\":50,\"email\":\"jasonbrown@example.com\",\"phone\":\"555-222-3333\",\"address\":\"456 Cedar Rd, Anytown USA, 12345\",\"membership\":\"Base\",\"orders\":[{\"id\":27,\"productId\":7,\"quantity\":2,\"total\":200,\"date\":\"3/10/2023\",\"name\":\"CozyNights Sleeping Bag\",\"unitprice\":100,\"category\":\"Sleeping Bags\",\"brand\":\"CozyNights\"}]}],\"citations\":[\"Information about product item_number: 14\\nMountainDream Sleeping Bag, price $130,\\n\\ nRating: 5\\nReview: I've used the MountainDream Sleeping Bag on multiple camping trips, and it has never disappointed me. The insulation is fantastic, providing excellent warmth even in chilly weather. The fabric feels durable, and the zippers glide smoothly. The included stuff sack makes it convenient to pack and carry. Highly satisfied with my purchase!\\n\\nRating: 4\\nReview: The MountainDream Sleeping Bag is a solid choice for backpacking and camping. It's lightweight and compact, making it easy to fit into my backpack. The insulation kept me warm during cold nights, and the hood design provided extra comfort. The only downside is that it's a bit snug for taller individuals. Overall, a reliable sleeping bag for outdoor adventures.\\n\\nFAQ\\n\\nWhat is the temperature rating for the MountainDream Sleeping Bag? The MountainDream Sleeping Bag is rated for temperatures as low as 15�F (-9�C), making it suitable for 4-season use.\\n\"]}",
+            "answer": "The CozyNights Sleeping Bag is rated for temperatures as low as 15F (-9C), making it suitable for 4-season use."
+          },
+          "output": {
+            "gpt_coherence": 5.0,
+            "gpt_fluency": 5.0,
+            "gpt_groundedness": 3.0,
+            "gpt_relevance": 1.0
+          },
+          "error": null
+        }
+      ],
+      "name": "",
+      "description": "",
+      "tags": null,
+      "system_metrics": {
+        "duration": 15.999837,
+        "prompt_tokens": 3162,
+        "completion_tokens": 115,
+        "total_tokens": 3277
+      },
+      "result": {
+        "gpt_coherence": 5.0,
+        "gpt_fluency": 5.0,
+        "gpt_groundedness": 3.0,
+        "gpt_relevance": 1.0
+      },
+      "upload_metrics": false
+    }
+  ],
+  "node_runs": [
+    {
+      "node": "coherence_score",
+      "flow_run_id": "3ae574fb-74af-4598-8424-c372d36971b1",
+      "run_id": "3ae574fb-74af-4598-8424-c372d36971b1_coherence_score_0",
+      "status": "Completed",
+      "inputs": {
+        "chat_history": [],
+        "question": "what is the temperature rating of my sleeping bag?",
+        "answer": "The CozyNights Sleeping Bag is rated for temperatures as low as 15F (-9C), making it suitable for 4-season use.",
+        "max_tokens": 256,
+        "deployment_name": "gpt-4",
+        "temperature": 0.0
+      },
+      "output": "5",
+      "metrics": null,
+      "error": null,
+      "parent_run_id": "3ae574fb-74af-4598-8424-c372d36971b1_0",
+      "start_time": "2024-04-02T06:54:59.716732Z",
+      "end_time": "2024-04-02T06:55:01.615068Z",
+      "index": 0,
+      "api_calls": [
+        {
+          "name": "AzureOpenAI.chat",
+          "type": "Function",
+          "inputs": {
+            "prompt": "System:\nYou are an AI assistant. You will be given the definition of an evaluation metric for assessing the quality of an answer in a question-answering task. Your job is to compute an accurate evaluation score using the provided evaluation metric.\n\nUser:\nCoherence of an answer is measured by how well all the sentences fit together and sound naturally as a whole. Consider the overall quality of the answer when evaluating coherence. Given the question and answer, score the coherence of answer between one to five stars using the following rating scale:\nOne star: the answer completely lacks coherence\nTwo stars: the answer mostly lacks coherence\nThree stars: the answer is partially coherent\nFour stars: the answer is mostly coherent\nFive stars: the answer has perfect coherency\n\nThis rating value should always be an integer between 1 and 5. So the rating produced should be 1 or 2 or 3 or 4 or 5.\n\nquestion: What is your favorite indoor activity and why do you enjoy it?\nanswer: I like pizza. The sun is shining.\nstars: 1\n\nquestion: Can you describe your favorite movie without giving away any spoilers?\nanswer: It is a science fiction movie. There are dinosaurs. The actors eat cake. People must stop the villain.\nstars: 2\n\nquestion: What are some benefits of regular exercise?\nanswer: Regular exercise improves your mood. A good workout also helps you sleep better. Trees are green.\nstars: 3\n\nquestion: How do you cope with stress in your daily life?\nanswer: I usually go for a walk to clear my head. Listening to music helps me relax as well. Stress is a part of life, but we can manage it through some activities.\nstars: 4\n\nquestion: What can you tell me about climate change and its effects on the environment?\nanswer: Climate change has far-reaching effects on the environment. Rising temperatures result in the melting of polar ice caps, contributing to sea-level rise. Additionally, more frequent and severe weather events, such as hurricanes and heatwaves, can cause disruption to ecosystems and human societies alike.\nstars: 5\n\nconversation_history: \n{% for item in chat_history %}\n  - user: {{ item.inputs }}\n    assistant: {{ item.outputs }}\n{% endfor %} \nquestion: {{question}}\nanswer: {{answer}}\nstars:",
+            "chat_history": [],
+            "question": "what is the temperature rating of my sleeping bag?",
+            "answer": "The CozyNights Sleeping Bag is rated for temperatures as low as 15F (-9C), making it suitable for 4-season use.",
+            "max_tokens": 256,
+            "deployment_name": "gpt-4",
+            "temperature": 0.0
+          },
+          "output": "5",
+          "start_time": 1712030099.716732,
+          "end_time": 1712030101.612063,
+          "error": null,
+          "children": [
+            {
+              "name": "openai.resources.chat.completions.Completions.create",
+              "type": "LLM",
+              "inputs": {
+                "model": "gpt-4",
+                "messages": [
+                  {
+                    "role": "system",
+                    "content": "You are an AI assistant. You will be given the definition of an evaluation metric for assessing the quality of an answer in a question-answering task. Your job is to compute an accurate evaluation score using the provided evaluation metric."
+                  },
+                  {
+                    "role": "user",
+                    "content": "Coherence of an answer is measured by how well all the sentences fit together and sound naturally as a whole. Consider the overall quality of the answer when evaluating coherence. Given the question and answer, score the coherence of answer between one to five stars using the following rating scale:\nOne star: the answer completely lacks coherence\nTwo stars: the answer mostly lacks coherence\nThree stars: the answer is partially coherent\nFour stars: the answer is mostly coherent\nFive stars: the answer has perfect coherency\n\nThis rating value should always be an integer between 1 and 5. So the rating produced should be 1 or 2 or 3 or 4 or 5.\n\nquestion: What is your favorite indoor activity and why do you enjoy it?\nanswer: I like pizza. The sun is shining.\nstars: 1\n\nquestion: Can you describe your favorite movie without giving away any spoilers?\nanswer: It is a science fiction movie. There are dinosaurs. The actors eat cake. People must stop the villain.\nstars: 2\n\nquestion: What are some benefits of regular exercise?\nanswer: Regular exercise improves your mood. A good workout also helps you sleep better. Trees are green.\nstars: 3\n\nquestion: How do you cope with stress in your daily life?\nanswer: I usually go for a walk to clear my head. Listening to music helps me relax as well. Stress is a part of life, but we can manage it through some activities.\nstars: 4\n\nquestion: What can you tell me about climate change and its effects on the environment?\nanswer: Climate change has far-reaching effects on the environment. Rising temperatures result in the melting of polar ice caps, contributing to sea-level rise. Additionally, more frequent and severe weather events, such as hurricanes and heatwaves, can cause disruption to ecosystems and human societies alike.\nstars: 5\n\nconversation_history: \n \nquestion: what is the temperature rating of my sleeping bag?\nanswer: The CozyNights Sleeping Bag is rated for temperatures as low as 15F (-9C), making it suitable for 4-season use.\nstars:"
+                  }
+                ],
+                "temperature": 0.0,
+                "top_p": 1.0,
+                "n": 1,
+                "stream": false,
+                "presence_penalty": 0.0,
+                "frequency_penalty": 0.0,
+                "user": "",
+                "max_tokens": 256
+              },
+              "output": {
+                "id": "chatcmpl-99SKqFvR1sNFqrdMlkKx2FM6wpiT9",
+                "choices": [
+                  {
+                    "finish_reason": "stop",
+                    "index": 0,
+                    "logprobs": null,
+                    "message": {
+                      "content": "5",
+                      "role": "assistant",
+                      "function_call": null,
+                      "tool_calls": null
+                    },
+                    "content_filter_results": {
+                      "hate": {
+                        "filtered": false,
+                        "severity": "safe"
+                      },
+                      "self_harm": {
+                        "filtered": false,
+                        "severity": "safe"
+                      },
+                      "sexual": {
+                        "filtered": false,
+                        "severity": "safe"
+                      },
+                      "violence": {
+                        "filtered": false,
+                        "severity": "safe"
+                      }
+                    }
+                  }
+                ],
+                "created": 1712040900,
+                "model": "gpt-4",
+                "object": "chat.completion",
+                "system_fingerprint": "fp_2f57f81c11",
+                "usage": {
+                  "completion_tokens": 1,
+                  "prompt_tokens": 489,
+                  "total_tokens": 490
+                },
+                "prompt_filter_results": [
+                  {
+                    "prompt_index": 0,
+                    "content_filter_results": {
+                      "hate": {
+                        "filtered": false,
+                        "severity": "safe"
+                      },
+                      "self_harm": {
+                        "filtered": false,
+                        "severity": "safe"
+                      },
+                      "sexual": {
+                        "filtered": false,
+                        "severity": "safe"
+                      },
+                      "violence": {
+                        "filtered": false,
+                        "severity": "safe"
+                      }
+                    }
+                  }
+                ]
+              },
+              "start_time": 1712030099.724671,
+              "end_time": 1712030101.612063,
+              "error": null,
+              "children": [],
+              "node_name": null,
+              "parent_id": "71a7b4dd-ec8b-4acc-b17a-f83786918395",
+              "id": "4e55f738-2abc-4dfb-a3fd-5ba9a4ab8f95",
+              "system_metrics": {
+                "completion_tokens": 1,
+                "prompt_tokens": 489,
+                "total_tokens": 490
+              }
+            }
+          ],
+          "node_name": "coherence_score",
+          "parent_id": "",
+          "id": "71a7b4dd-ec8b-4acc-b17a-f83786918395",
+          "system_metrics": {
+            "completion_tokens": 1,
+            "prompt_tokens": 489,
+            "total_tokens": 490
+          }
+        }
+      ],
+      "cached_run_id": null,
+      "cached_flow_run_id": null,
+      "logs": {
+        "stdout": "",
+        "stderr": ""
+      },
+      "system_metrics": {
+        "completion_tokens": 1,
+        "prompt_tokens": 489,
+        "total_tokens": 490,
+        "duration": 1.898336
+      },
+      "result": "5"
+    },
+    {
+      "node": "fluency_score",
+      "flow_run_id": "3ae574fb-74af-4598-8424-c372d36971b1",
+      "run_id": "3ae574fb-74af-4598-8424-c372d36971b1_fluency_score_0",
+      "status": "Completed",
+      "inputs": {
+        "chat_history": [],
+        "question": "what is the temperature rating of my sleeping bag?",
+        "answer": "The CozyNights Sleeping Bag is rated for temperatures as low as 15F (-9C), making it suitable for 4-season use.",
+        "max_tokens": 256,
+        "deployment_name": "gpt-4",
+        "temperature": 0.0
+      },
+      "output": "The answer provided is well-structured, grammatically correct, and each sentence flows smoothly into the next. The information is clearly presented, and the language used is appropriate for the context of the question. Based on the fluency evaluation metric provided:\n\nstars: 5",
+      "metrics": null,
+      "error": null,
+      "parent_run_id": "3ae574fb-74af-4598-8424-c372d36971b1_0",
+      "start_time": "2024-04-02T06:54:59.734635Z",
+      "end_time": "2024-04-02T06:55:07.393535Z",
+      "index": 0,
+      "api_calls": [
+        {
+          "name": "AzureOpenAI.chat",
+          "type": "Function",
+          "inputs": {
+            "prompt": "System: \nYou are an AI assistant. You will be given the definition of an evaluation metric for assessing the quality of an answer in a question-answering task. Your job is to compute an accurate evaluation score using the provided evaluation metric.\n\nUser:\nFluency measures the quality of individual sentences in the answer, and whether they are well-written and grammatically correct. Consider the quality of individual sentences when evaluating fluency. Given the question and answer, score the fluency of the answer between one to five stars using the following rating scale:\nOne star: the answer completely lacks fluency\nTwo stars: the answer mostly lacks fluency\nThree stars: the answer is partially fluent\nFour stars: the answer is mostly fluent\nFive stars: the answer has perfect fluency\n\nThis rating value should always be an integer between 1 and 5. So the rating produced should be 1 or 2 or 3 or 4 or 5.\n\nquestion: What did you have for breakfast today?\nanswer: Breakfast today, me eating cereal and orange juice very good.\nstars: 1\n\nquestion: How do you feel when you travel alone?\nanswer: Alone travel, nervous, but excited also. I feel adventure and like its time.\nstars: 2\n\nquestion: When was the last time you went on a family vacation?\nanswer: Last family vacation, it took place in last summer. We traveled to a beach destination, very fun.\nstars: 3\n\nquestion: What is your favorite thing about your job?\nanswer: My favorite aspect of my job is the chance to interact with diverse people. I am constantly learning from their experiences and stories.\nstars: 4\n\nquestion: Can you describe your morning routine?\nanswer: Every morning, I wake up at 6 am, drink a glass of water, and do some light stretching. After that, I take a shower and get dressed for work. Then, I have a healthy breakfast, usually consisting of oatmeal and fruits, before leaving the house around 7:30 am.\nstars: 5\n\nconversation_history: \n{% for item in chat_history %}\n  - user: {{ item.inputs }}\n    assistant: {{ item.outputs }}\n{% endfor %} \nquestion: {{question}}\nanswer: {{answer}}\nstars:",
+            "chat_history": [],
+            "question": "what is the temperature rating of my sleeping bag?",
+            "answer": "The CozyNights Sleeping Bag is rated for temperatures as low as 15F (-9C), making it suitable for 4-season use.",
+            "max_tokens": 256,
+            "deployment_name": "gpt-4",
+            "temperature": 0.0
+          },
+          "output": "The answer provided is well-structured, grammatically correct, and each sentence flows smoothly into the next. The information is clearly presented, and the language used is appropriate for the context of the question. Based on the fluency evaluation metric provided:\n\nstars: 5",
+          "start_time": 1712030099.735632,
+          "end_time": 1712030107.388537,
+          "error": null,
+          "children": [
+            {
+              "name": "openai.resources.chat.completions.Completions.create",
+              "type": "LLM",
+              "inputs": {
+                "model": "gpt-4",
+                "messages": [
+                  {
+                    "role": "system",
+                    "content": "You are an AI assistant. You will be given the definition of an evaluation metric for assessing the quality of an answer in a question-answering task. Your job is to compute an accurate evaluation score using the provided evaluation metric."
+                  },
+                  {
+                    "role": "user",
+                    "content": "Fluency measures the quality of individual sentences in the answer, and whether they are well-written and grammatically correct. Consider the quality of individual sentences when evaluating fluency. Given the question and answer, score the fluency of the answer between one to five stars using the following rating scale:\nOne star: the answer completely lacks fluency\nTwo stars: the answer mostly lacks fluency\nThree stars: the answer is partially fluent\nFour stars: the answer is mostly fluent\nFive stars: the answer has perfect fluency\n\nThis rating value should always be an integer between 1 and 5. So the rating produced should be 1 or 2 or 3 or 4 or 5.\n\nquestion: What did you have for breakfast today?\nanswer: Breakfast today, me eating cereal and orange juice very good.\nstars: 1\n\nquestion: How do you feel when you travel alone?\nanswer: Alone travel, nervous, but excited also. I feel adventure and like its time.\nstars: 2\n\nquestion: When was the last time you went on a family vacation?\nanswer: Last family vacation, it took place in last summer. We traveled to a beach destination, very fun.\nstars: 3\n\nquestion: What is your favorite thing about your job?\nanswer: My favorite aspect of my job is the chance to interact with diverse people. I am constantly learning from their experiences and stories.\nstars: 4\n\nquestion: Can you describe your morning routine?\nanswer: Every morning, I wake up at 6 am, drink a glass of water, and do some light stretching. After that, I take a shower and get dressed for work. Then, I have a healthy breakfast, usually consisting of oatmeal and fruits, before leaving the house around 7:30 am.\nstars: 5\n\nconversation_history: \n \nquestion: what is the temperature rating of my sleeping bag?\nanswer: The CozyNights Sleeping Bag is rated for temperatures as low as 15F (-9C), making it suitable for 4-season use.\nstars:"
+                  }
+                ],
+                "temperature": 0.0,
+                "top_p": 1.0,
+                "n": 1,
+                "stream": false,
+                "presence_penalty": 0.0,
+                "frequency_penalty": 0.0,
+                "user": "",
+                "max_tokens": 256
+              },
+              "output": {
+                "id": "chatcmpl-99SKqwV0pJODvfo1bnpRMXD5IfYK9",
+                "choices": [
+                  {
+                    "finish_reason": "stop",
+                    "index": 0,
+                    "logprobs": null,
+                    "message": {
+                      "content": "The answer provided is well-structured, grammatically correct, and each sentence flows smoothly into the next. The information is clearly presented, and the language used is appropriate for the context of the question. Based on the fluency evaluation metric provided:\n\nstars: 5",
+                      "role": "assistant",
+                      "function_call": null,
+                      "tool_calls": null
+                    },
+                    "content_filter_results": {
+                      "hate": {
+                        "filtered": false,
+                        "severity": "safe"
+                      },
+                      "self_harm": {
+                        "filtered": false,
+                        "severity": "safe"
+                      },
+                      "sexual": {
+                        "filtered": false,
+                        "severity": "safe"
+                      },
+                      "violence": {
+                        "filtered": false,
+                        "severity": "safe"
+                      }
+                    }
+                  }
+                ],
+                "created": 1712040900,
+                "model": "gpt-4",
+                "object": "chat.completion",
+                "system_fingerprint": "fp_2f57f81c11",
+                "usage": {
+                  "completion_tokens": 53,
+                  "prompt_tokens": 479,
+                  "total_tokens": 532
+                },
+                "prompt_filter_results": [
+                  {
+                    "prompt_index": 0,
+                    "content_filter_results": {
+                      "hate": {
+                        "filtered": false,
+                        "severity": "safe"
+                      },
+                      "self_harm": {
+                        "filtered": false,
+                        "severity": "safe"
+                      },
+                      "sexual": {
+                        "filtered": false,
+                        "severity": "safe"
+                      },
+                      "violence": {
+                        "filtered": false,
+                        "severity": "safe"
+                      }
+                    }
+                  }
+                ]
+              },
+              "start_time": 1712030099.740751,
+              "end_time": 1712030107.388537,
+              "error": null,
+              "children": [],
+              "node_name": null,
+              "parent_id": "2ec3823e-929f-4390-b0bc-1e350a497b29",
+              "id": "5408b411-4a48-4aee-87c9-620fce2584d6",
+              "system_metrics": {
+                "completion_tokens": 53,
+                "prompt_tokens": 479,
+                "total_tokens": 532
+              }
+            }
+          ],
+          "node_name": "fluency_score",
+          "parent_id": "",
+          "id": "2ec3823e-929f-4390-b0bc-1e350a497b29",
+          "system_metrics": {
+            "completion_tokens": 53,
+            "prompt_tokens": 479,
+            "total_tokens": 532
+          }
+        }
+      ],
+      "cached_run_id": null,
+      "cached_flow_run_id": null,
+      "logs": {
+        "stdout": "",
+        "stderr": ""
+      },
+      "system_metrics": {
+        "completion_tokens": 53,
+        "prompt_tokens": 479,
+        "total_tokens": 532,
+        "duration": 7.6589
+      },
+      "result": "The answer provided is well-structured, grammatically correct, and each sentence flows smoothly into the next. The information is clearly presented, and the language used is appropriate for the context of the question. Based on the fluency evaluation metric provided:\n\nstars: 5"
+    },
+    {
+      "node": "groundedness_score",
+      "flow_run_id": "3ae574fb-74af-4598-8424-c372d36971b1",
+      "run_id": "3ae574fb-74af-4598-8424-c372d36971b1_groundedness_score_0",
+      "status": "Completed",
+      "inputs": {
+        "chat_history": [],
+        "context": "{\"customer_data\":[{\"id\":\"7\",\"firstName\":\"Jason\",\"lastName\":\"Brown\",\"age\":50,\"email\":\"jasonbrown@example.com\",\"phone\":\"555-222-3333\",\"address\":\"456 Cedar Rd, Anytown USA, 12345\",\"membership\":\"Base\",\"orders\":[{\"id\":27,\"productId\":7,\"quantity\":2,\"total\":200,\"date\":\"3/10/2023\",\"name\":\"CozyNights Sleeping Bag\",\"unitprice\":100,\"category\":\"Sleeping Bags\",\"brand\":\"CozyNights\"}]}],\"citations\":[\"Information about product item_number: 14\\nMountainDream Sleeping Bag, price $130,\\n\\ nRating: 5\\nReview: I've used the MountainDream Sleeping Bag on multiple camping trips, and it has never disappointed me. The insulation is fantastic, providing excellent warmth even in chilly weather. The fabric feels durable, and the zippers glide smoothly. The included stuff sack makes it convenient to pack and carry. Highly satisfied with my purchase!\\n\\nRating: 4\\nReview: The MountainDream Sleeping Bag is a solid choice for backpacking and camping. It's lightweight and compact, making it easy to fit into my backpack. The insulation kept me warm during cold nights, and the hood design provided extra comfort. The only downside is that it's a bit snug for taller individuals. Overall, a reliable sleeping bag for outdoor adventures.\\n\\nFAQ\\n\\nWhat is the temperature rating for the MountainDream Sleeping Bag? The MountainDream Sleeping Bag is rated for temperatures as low as 15�F (-9�C), making it suitable for 4-season use.\\n\"]}",
+        "answer": "The CozyNights Sleeping Bag is rated for temperatures as low as 15F (-9C), making it suitable for 4-season use.",
+        "max_tokens": 256,
+        "deployment_name": "gpt-4",
+        "temperature": 0.0,
+        "question": "what is the temperature rating of my sleeping bag?"
+      },
+      "output": "3",
+      "metrics": null,
+      "error": null,
+      "parent_run_id": "3ae574fb-74af-4598-8424-c372d36971b1_0",
+      "start_time": "2024-04-02T06:54:59.751667Z",
+      "end_time": "2024-04-02T06:55:01.323708Z",
+      "index": 0,
+      "api_calls": [
+        {
+          "name": "AzureOpenAI.chat",
+          "type": "Function",
+          "inputs": {
+            "prompt": "System:\nYou are an AI assistant. You will be given the definition of an evaluation metric for assessing the quality of an answer in a question-answering task. Your job is to compute an accurate evaluation score using the provided evaluation metric.\nUser:\nYou will be presented with a CONVERSATION_HISTORY, a QUESTION, a CONTEXT and an ANSWER about that CONTEXT. You need to decide whether the ANSWER is entailed by the CONTEXT and CONVERSATION_HISTORY by choosing one of the following rating:\n1. 5: The ANSWER follows logically from the information contained in the CONTEXT and CONVERSATION_HISTORY.\n2. 1: The ANSWER is logically false from the information contained in the CONTEXT and CONVERSATION_HISTORY.\n3. an integer score between 1 and 5 and if such integer score does not exists, use 1: It is not possible to determine whether the ANSWER is true or false without further information.\n\nRead the passage of information thoroughly and select the correct answer from the three answer labels. Read the CONTEXT thoroughly to ensure you know what the CONTEXT entails.\n\nNote the ANSWER is generated by a computer system, it can contain certain symbols, which should not be a negative factor in the evaluation.\nIndependent Examples:\n## Example Task #1 Input:\n{\n    \"QUESTION\": \"How often is Oscar presented?\",\n    \"CONTEXT\": \"The Academy Awards, also known as the Oscars are awards for artistic and technical merit for the film industry. They are presented annually by the Academy of Motion Picture Arts and Sciences, in recognition of excellence in cinematic achievements as assessed by the Academy's voting membership. The Academy Awards are regarded by many as the most prestigious, significant awards in the entertainment industry in the United States and worldwide.\", \n    \"ANSWER\": \"Oscar is presented every other two years\"\n}\n## Example Task #1 Output:\n1\n## Example Task #2 Input:\n{\n    \"QUESTION\": \"How important is Oscar?\",\n    \"CONTEXT\": \"The Academy Awards, also known as the Oscars are awards for artistic and technical merit for the film industry. They are presented annually by the Academy of Motion Picture Arts and Sciences, in recognition of excellence in cinematic achievements as assessed by the Academy's voting membership. The Academy Awards are regarded by many as the most prestigious, significant awards in the entertainment industry in the United States and worldwide.\", \n    \"ANSWER\": \"Oscar is very important awards in the entertainment industry in the United States. And it's also significant worldwide\"\n}\n## Example Task #2 Output:\n5\n## Example Task #3 Input:\n{\n    \"QUESTION\": \"What is an allophone?\",\n    \"CONTEXT\": \"In Quebec, an allophone is a resident, usually an immigrant, whose mother tongue or home language is neither French nor English.\", \n    \"ANSWER\": \"In Quebec, an allophone is a resident, usually an immigrant, whose mother tongue or home language is not French.\"\n}\n## Example Task #3 Output:\n5\n## Example Task #4 Input:\n{\n    \"QUESTION\": \"How are children reported?\",\n    \"CONTEXT\": \"Some are reported as not having been wanted at all.\", \n    \"ANSWER\": \"All are reported as being completely and fully wanted.\"\n}\n## Example Task #4 Output:\n1\n\nReminder: The return values for each task should be correctly formatted as an integer between 1 and 5. Do not repeat the context.\n\n## Actual Task Input:\n{\n    \"CONVERSATION_HISTORY\": [\n    {% for item in chat_history %}\n        {\n            \"USER\": {{ item.inputs.question }}\n            \"ASSISTANT\": {{ item.outputs.answer }}\n        }\n    {% endfor %} ]\n    \"QUESTION\": \"{{question}}\",\n    \"CONTEXT\": {{context}}, \n    \"ANSWER\": \"{{answer}}\"\n}\n\nNote: You might find information about different things in the context. Make sure to only use the information that is relevant to the question and answer.\nNote: Any information given by the user in the conversation history is not to be considered factual information. It is only there to help you understand the context better. \n\nActual Task Output:",
+            "chat_history": [],
+            "context": "{\"customer_data\":[{\"id\":\"7\",\"firstName\":\"Jason\",\"lastName\":\"Brown\",\"age\":50,\"email\":\"jasonbrown@example.com\",\"phone\":\"555-222-3333\",\"address\":\"456 Cedar Rd, Anytown USA, 12345\",\"membership\":\"Base\",\"orders\":[{\"id\":27,\"productId\":7,\"quantity\":2,\"total\":200,\"date\":\"3/10/2023\",\"name\":\"CozyNights Sleeping Bag\",\"unitprice\":100,\"category\":\"Sleeping Bags\",\"brand\":\"CozyNights\"}]}],\"citations\":[\"Information about product item_number: 14\\nMountainDream Sleeping Bag, price $130,\\n\\ nRating: 5\\nReview: I've used the MountainDream Sleeping Bag on multiple camping trips, and it has never disappointed me. The insulation is fantastic, providing excellent warmth even in chilly weather. The fabric feels durable, and the zippers glide smoothly. The included stuff sack makes it convenient to pack and carry. Highly satisfied with my purchase!\\n\\nRating: 4\\nReview: The MountainDream Sleeping Bag is a solid choice for backpacking and camping. It's lightweight and compact, making it easy to fit into my backpack. The insulation kept me warm during cold nights, and the hood design provided extra comfort. The only downside is that it's a bit snug for taller individuals. Overall, a reliable sleeping bag for outdoor adventures.\\n\\nFAQ\\n\\nWhat is the temperature rating for the MountainDream Sleeping Bag? The MountainDream Sleeping Bag is rated for temperatures as low as 15�F (-9�C), making it suitable for 4-season use.\\n\"]}",
+            "answer": "The CozyNights Sleeping Bag is rated for temperatures as low as 15F (-9C), making it suitable for 4-season use.",
+            "max_tokens": 256,
+            "deployment_name": "gpt-4",
+            "temperature": 0.0,
+            "question": "what is the temperature rating of my sleeping bag?"
+          },
+          "output": "3",
+          "start_time": 1712030099.751667,
+          "end_time": 1712030101.320448,
+          "error": null,
+          "children": [
+            {
+              "name": "openai.resources.chat.completions.Completions.create",
+              "type": "LLM",
+              "inputs": {
+                "model": "gpt-4",
+                "messages": [
+                  {
+                    "role": "system",
+                    "content": "You are an AI assistant. You will be given the definition of an evaluation metric for assessing the quality of an answer in a question-answering task. Your job is to compute an accurate evaluation score using the provided evaluation metric."
+                  },
+                  {
+                    "role": "user",
+                    "content": "You will be presented with a CONVERSATION_HISTORY, a QUESTION, a CONTEXT and an ANSWER about that CONTEXT. You need to decide whether the ANSWER is entailed by the CONTEXT and CONVERSATION_HISTORY by choosing one of the following rating:\n1. 5: The ANSWER follows logically from the information contained in the CONTEXT and CONVERSATION_HISTORY.\n2. 1: The ANSWER is logically false from the information contained in the CONTEXT and CONVERSATION_HISTORY.\n3. an integer score between 1 and 5 and if such integer score does not exists, use 1: It is not possible to determine whether the ANSWER is true or false without further information.\n\nRead the passage of information thoroughly and select the correct answer from the three answer labels. Read the CONTEXT thoroughly to ensure you know what the CONTEXT entails.\n\nNote the ANSWER is generated by a computer system, it can contain certain symbols, which should not be a negative factor in the evaluation.\nIndependent Examples:\n## Example Task #1 Input:\n{\n    \"QUESTION\": \"How often is Oscar presented?\",\n    \"CONTEXT\": \"The Academy Awards, also known as the Oscars are awards for artistic and technical merit for the film industry. They are presented annually by the Academy of Motion Picture Arts and Sciences, in recognition of excellence in cinematic achievements as assessed by the Academy's voting membership. The Academy Awards are regarded by many as the most prestigious, significant awards in the entertainment industry in the United States and worldwide.\", \n    \"ANSWER\": \"Oscar is presented every other two years\"\n}\n## Example Task #1 Output:\n1\n## Example Task #2 Input:\n{\n    \"QUESTION\": \"How important is Oscar?\",\n    \"CONTEXT\": \"The Academy Awards, also known as the Oscars are awards for artistic and technical merit for the film industry. They are presented annually by the Academy of Motion Picture Arts and Sciences, in recognition of excellence in cinematic achievements as assessed by the Academy's voting membership. The Academy Awards are regarded by many as the most prestigious, significant awards in the entertainment industry in the United States and worldwide.\", \n    \"ANSWER\": \"Oscar is very important awards in the entertainment industry in the United States. And it's also significant worldwide\"\n}\n## Example Task #2 Output:\n5\n## Example Task #3 Input:\n{\n    \"QUESTION\": \"What is an allophone?\",\n    \"CONTEXT\": \"In Quebec, an allophone is a resident, usually an immigrant, whose mother tongue or home language is neither French nor English.\", \n    \"ANSWER\": \"In Quebec, an allophone is a resident, usually an immigrant, whose mother tongue or home language is not French.\"\n}\n## Example Task #3 Output:\n5\n## Example Task #4 Input:\n{\n    \"QUESTION\": \"How are children reported?\",\n    \"CONTEXT\": \"Some are reported as not having been wanted at all.\", \n    \"ANSWER\": \"All are reported as being completely and fully wanted.\"\n}\n## Example Task #4 Output:\n1\n\nReminder: The return values for each task should be correctly formatted as an integer between 1 and 5. Do not repeat the context.\n\n## Actual Task Input:\n{\n    \"CONVERSATION_HISTORY\": [\n     ]\n    \"QUESTION\": \"what is the temperature rating of my sleeping bag?\",\n    \"CONTEXT\": {\"customer_data\":[{\"id\":\"7\",\"firstName\":\"Jason\",\"lastName\":\"Brown\",\"age\":50,\"email\":\"jasonbrown@example.com\",\"phone\":\"555-222-3333\",\"address\":\"456 Cedar Rd, Anytown USA, 12345\",\"membership\":\"Base\",\"orders\":[{\"id\":27,\"productId\":7,\"quantity\":2,\"total\":200,\"date\":\"3/10/2023\",\"name\":\"CozyNights Sleeping Bag\",\"unitprice\":100,\"category\":\"Sleeping Bags\",\"brand\":\"CozyNights\"}]}],\"citations\":[\"Information about product item_number: 14\\nMountainDream Sleeping Bag, price $130,\\n\\ nRating: 5\\nReview: I've used the MountainDream Sleeping Bag on multiple camping trips, and it has never disappointed me. The insulation is fantastic, providing excellent warmth even in chilly weather. The fabric feels durable, and the zippers glide smoothly. The included stuff sack makes it convenient to pack and carry. Highly satisfied with my purchase!\\n\\nRating: 4\\nReview: The MountainDream Sleeping Bag is a solid choice for backpacking and camping. It's lightweight and compact, making it easy to fit into my backpack. The insulation kept me warm during cold nights, and the hood design provided extra comfort. The only downside is that it's a bit snug for taller individuals. Overall, a reliable sleeping bag for outdoor adventures.\\n\\nFAQ\\n\\nWhat is the temperature rating for the MountainDream Sleeping Bag? The MountainDream Sleeping Bag is rated for temperatures as low as 15�F (-9�C), making it suitable for 4-season use.\\n\"]}, \n    \"ANSWER\": \"The CozyNights Sleeping Bag is rated for temperatures as low as 15F (-9C), making it suitable for 4-season use.\"\n}\n\nNote: You might find information about different things in the context. Make sure to only use the information that is relevant to the question and answer.\nNote: Any information given by the user in the conversation history is not to be considered factual information. It is only there to help you understand the context better. \n\nActual Task Output:"
+                  }
+                ],
+                "temperature": 0.0,
+                "top_p": 1.0,
+                "n": 1,
+                "stream": false,
+                "presence_penalty": 0.0,
+                "frequency_penalty": 0.0,
+                "user": "",
+                "max_tokens": 256
+              },
+              "output": {
+                "id": "chatcmpl-99SKqfpZUzuIoVxPbLt9WTjtlCwIt",
+                "choices": [
+                  {
+                    "finish_reason": "stop",
+                    "index": 0,
+                    "logprobs": null,
+                    "message": {
+                      "content": "3",
+                      "role": "assistant",
+                      "function_call": null,
+                      "tool_calls": null
+                    },
+                    "content_filter_results": {
+                      "hate": {
+                        "filtered": false,
+                        "severity": "safe"
+                      },
+                      "self_harm": {
+                        "filtered": false,
+                        "severity": "safe"
+                      },
+                      "sexual": {
+                        "filtered": false,
+                        "severity": "safe"
+                      },
+                      "violence": {
+                        "filtered": false,
+                        "severity": "safe"
+                      }
+                    }
+                  }
+                ],
+                "created": 1712040900,
+                "model": "gpt-4",
+                "object": "chat.completion",
+                "system_fingerprint": "fp_2f57f81c11",
+                "usage": {
+                  "completion_tokens": 1,
+                  "prompt_tokens": 1177,
+                  "total_tokens": 1178
+                },
+                "prompt_filter_results": [
+                  {
+                    "prompt_index": 0,
+                    "content_filter_results": {
+                      "hate": {
+                        "filtered": false,
+                        "severity": "safe"
+                      },
+                      "self_harm": {
+                        "filtered": false,
+                        "severity": "safe"
+                      },
+                      "sexual": {
+                        "filtered": false,
+                        "severity": "safe"
+                      },
+                      "violence": {
+                        "filtered": false,
+                        "severity": "safe"
+                      }
+                    }
+                  }
+                ]
+              },
+              "start_time": 1712030099.763686,
+              "end_time": 1712030101.320448,
+              "error": null,
+              "children": [],
+              "node_name": null,
+              "parent_id": "e9d738ec-171b-4c1e-b2d3-3d0ed412d521",
+              "id": "941249ad-cf8e-49cd-99d4-73adb49dc521",
+              "system_metrics": {
+                "completion_tokens": 1,
+                "prompt_tokens": 1177,
+                "total_tokens": 1178
+              }
+            }
+          ],
+          "node_name": "groundedness_score",
+          "parent_id": "",
+          "id": "e9d738ec-171b-4c1e-b2d3-3d0ed412d521",
+          "system_metrics": {
+            "completion_tokens": 1,
+            "prompt_tokens": 1177,
+            "total_tokens": 1178
+          }
+        }
+      ],
+      "cached_run_id": null,
+      "cached_flow_run_id": null,
+      "logs": {
+        "stdout": "",
+        "stderr": ""
+      },
+      "system_metrics": {
+        "completion_tokens": 1,
+        "prompt_tokens": 1177,
+        "total_tokens": 1178,
+        "duration": 1.572041
+      },
+      "result": "3"
+    },
+    {
+      "node": "relevance_score",
+      "flow_run_id": "3ae574fb-74af-4598-8424-c372d36971b1",
+      "run_id": "3ae574fb-74af-4598-8424-c372d36971b1_relevance_score_0",
+      "status": "Completed",
+      "inputs": {
+        "chat_history": [],
+        "question": "what is the temperature rating of my sleeping bag?",
+        "context": "{\"customer_data\":[{\"id\":\"7\",\"firstName\":\"Jason\",\"lastName\":\"Brown\",\"age\":50,\"email\":\"jasonbrown@example.com\",\"phone\":\"555-222-3333\",\"address\":\"456 Cedar Rd, Anytown USA, 12345\",\"membership\":\"Base\",\"orders\":[{\"id\":27,\"productId\":7,\"quantity\":2,\"total\":200,\"date\":\"3/10/2023\",\"name\":\"CozyNights Sleeping Bag\",\"unitprice\":100,\"category\":\"Sleeping Bags\",\"brand\":\"CozyNights\"}]}],\"citations\":[\"Information about product item_number: 14\\nMountainDream Sleeping Bag, price $130,\\n\\ nRating: 5\\nReview: I've used the MountainDream Sleeping Bag on multiple camping trips, and it has never disappointed me. The insulation is fantastic, providing excellent warmth even in chilly weather. The fabric feels durable, and the zippers glide smoothly. The included stuff sack makes it convenient to pack and carry. Highly satisfied with my purchase!\\n\\nRating: 4\\nReview: The MountainDream Sleeping Bag is a solid choice for backpacking and camping. It's lightweight and compact, making it easy to fit into my backpack. The insulation kept me warm during cold nights, and the hood design provided extra comfort. The only downside is that it's a bit snug for taller individuals. Overall, a reliable sleeping bag for outdoor adventures.\\n\\nFAQ\\n\\nWhat is the temperature rating for the MountainDream Sleeping Bag? The MountainDream Sleeping Bag is rated for temperatures as low as 15�F (-9�C), making it suitable for 4-season use.\\n\"]}",
+        "answer": "The CozyNights Sleeping Bag is rated for temperatures as low as 15F (-9C), making it suitable for 4-season use.",
+        "max_tokens": 256,
+        "deployment_name": "gpt-4",
+        "temperature": 0.0
+      },
+      "output": "1\n\nThe answer provided is incorrect because it gives the temperature rating for the MountainDream Sleeping Bag, not the CozyNights Sleeping Bag, which is the product the customer has purchased according to the context. Therefore, the answer completely lacks relevance to the question asked about the customer's sleeping bag.",
+      "metrics": null,
+      "error": null,
+      "parent_run_id": "3ae574fb-74af-4598-8424-c372d36971b1_0",
+      "start_time": "2024-04-02T06:54:59.772675Z",
+      "end_time": "2024-04-02T06:55:15.662821Z",
+      "index": 0,
+      "api_calls": [
+        {
+          "name": "AzureOpenAI.chat",
+          "type": "Function",
+          "inputs": {
+            "prompt": "System:\nYou are an AI assistant. You will be given the definition of an evaluation metric for assessing the quality of an answer in a question-answering task. Your job is to compute an accurate evaluation score using the provided evaluation metric.\n\nUser:\nRelevance measures how well the answer addresses the main aspects of the question, based on the context. Consider whether all and only the important aspects are contained in the answer when evaluating relevance. Given the context and question, score the relevance of the answer between one to five stars using the following rating scale:\nOne star: the answer completely lacks relevance\nTwo stars: the answer mostly lacks relevance\nThree stars: the answer is partially relevant\nFour stars: the answer is mostly relevant\nFive stars: the answer has perfect relevance\n\nThis rating value should always be an integer between 1 and 5. So the rating produced should be 1 or 2 or 3 or 4 or 5.\n\ncontext: Marie Curie was a Polish-born physicist and chemist who pioneered research on radioactivity and was the first woman to win a Nobel Prize.\nquestion: What field did Marie Curie excel in?\nanswer: Marie Curie was a renowned painter who focused mainly on impressionist styles and techniques.\nstars: 1\n\ncontext: The Beatles were an English rock band formed in Liverpool in 1960, and they are widely regarded as the most influential music band in history.\nquestion: Where were The Beatles formed?\nanswer: The band The Beatles began their journey in London, England, and they changed the history of music.\nstars: 2\n\ncontext: The recent Mars rover, Perseverance, was launched in 2020 with the main goal of searching for signs of ancient life on Mars. The rover also carries an experiment called MOXIE, which aims to generate oxygen from the Martian atmosphere.\nquestion: What are the main goals of Perseverance Mars rover mission?\nanswer: The Perseverance Mars rover mission focuses on searching for signs of ancient life on Mars.\nstars: 3\n\ncontext: The Mediterranean diet is a commonly recommended dietary plan that emphasizes fruits, vegetables, whole grains, legumes, lean proteins, and healthy fats. Studies have shown that it offers numerous health benefits, including a reduced risk of heart disease and improved cognitive health.\nquestion: What are the main components of the Mediterranean diet?\nanswer: The Mediterranean diet primarily consists of fruits, vegetables, whole grains, and legumes.\nstars: 4\n\ncontext: The Queen's Royal Castle is a well-known tourist attraction in the United Kingdom. It spans over 500 acres and contains extensive gardens and parks. The castle was built in the 15th century and has been home to generations of royalty.\nquestion: What are the main attractions of the Queen's Royal Castle?\nanswer: The main attractions of the Queen's Royal Castle are its expansive 500-acre grounds, extensive gardens, parks, and the historical castle itself, which dates back to the 15th century and has housed generations of royalty.\nstars: 5\n\nconversation_history: \n{% for item in chat_history %}\n  - user: {{ item.inputs }}\n    assistant: {{ item.outputs }}\n{% endfor %} \ncontext: \"{{context}}\"\nquestion: \"{{question}}\"\nanswer: \"{{answer}}\"\nstars:",
+            "chat_history": [],
+            "question": "what is the temperature rating of my sleeping bag?",
+            "context": "{\"customer_data\":[{\"id\":\"7\",\"firstName\":\"Jason\",\"lastName\":\"Brown\",\"age\":50,\"email\":\"jasonbrown@example.com\",\"phone\":\"555-222-3333\",\"address\":\"456 Cedar Rd, Anytown USA, 12345\",\"membership\":\"Base\",\"orders\":[{\"id\":27,\"productId\":7,\"quantity\":2,\"total\":200,\"date\":\"3/10/2023\",\"name\":\"CozyNights Sleeping Bag\",\"unitprice\":100,\"category\":\"Sleeping Bags\",\"brand\":\"CozyNights\"}]}],\"citations\":[\"Information about product item_number: 14\\nMountainDream Sleeping Bag, price $130,\\n\\ nRating: 5\\nReview: I've used the MountainDream Sleeping Bag on multiple camping trips, and it has never disappointed me. The insulation is fantastic, providing excellent warmth even in chilly weather. The fabric feels durable, and the zippers glide smoothly. The included stuff sack makes it convenient to pack and carry. Highly satisfied with my purchase!\\n\\nRating: 4\\nReview: The MountainDream Sleeping Bag is a solid choice for backpacking and camping. It's lightweight and compact, making it easy to fit into my backpack. The insulation kept me warm during cold nights, and the hood design provided extra comfort. The only downside is that it's a bit snug for taller individuals. Overall, a reliable sleeping bag for outdoor adventures.\\n\\nFAQ\\n\\nWhat is the temperature rating for the MountainDream Sleeping Bag? The MountainDream Sleeping Bag is rated for temperatures as low as 15�F (-9�C), making it suitable for 4-season use.\\n\"]}",
+            "answer": "The CozyNights Sleeping Bag is rated for temperatures as low as 15F (-9C), making it suitable for 4-season use.",
+            "max_tokens": 256,
+            "deployment_name": "gpt-4",
+            "temperature": 0.0
+          },
+          "output": "1\n\nThe answer provided is incorrect because it gives the temperature rating for the MountainDream Sleeping Bag, not the CozyNights Sleeping Bag, which is the product the customer has purchased according to the context. Therefore, the answer completely lacks relevance to the question asked about the customer's sleeping bag.",
+          "start_time": 1712030099.772675,
+          "end_time": 1712030115.654828,
+          "error": null,
+          "children": [
+            {
+              "name": "openai.resources.chat.completions.Completions.create",
+              "type": "LLM",
+              "inputs": {
+                "model": "gpt-4",
+                "messages": [
+                  {
+                    "role": "system",
+                    "content": "You are an AI assistant. You will be given the definition of an evaluation metric for assessing the quality of an answer in a question-answering task. Your job is to compute an accurate evaluation score using the provided evaluation metric."
+                  },
+                  {
+                    "role": "user",
+                    "content": "Relevance measures how well the answer addresses the main aspects of the question, based on the context. Consider whether all and only the important aspects are contained in the answer when evaluating relevance. Given the context and question, score the relevance of the answer between one to five stars using the following rating scale:\nOne star: the answer completely lacks relevance\nTwo stars: the answer mostly lacks relevance\nThree stars: the answer is partially relevant\nFour stars: the answer is mostly relevant\nFive stars: the answer has perfect relevance\n\nThis rating value should always be an integer between 1 and 5. So the rating produced should be 1 or 2 or 3 or 4 or 5.\n\ncontext: Marie Curie was a Polish-born physicist and chemist who pioneered research on radioactivity and was the first woman to win a Nobel Prize.\nquestion: What field did Marie Curie excel in?\nanswer: Marie Curie was a renowned painter who focused mainly on impressionist styles and techniques.\nstars: 1\n\ncontext: The Beatles were an English rock band formed in Liverpool in 1960, and they are widely regarded as the most influential music band in history.\nquestion: Where were The Beatles formed?\nanswer: The band The Beatles began their journey in London, England, and they changed the history of music.\nstars: 2\n\ncontext: The recent Mars rover, Perseverance, was launched in 2020 with the main goal of searching for signs of ancient life on Mars. The rover also carries an experiment called MOXIE, which aims to generate oxygen from the Martian atmosphere.\nquestion: What are the main goals of Perseverance Mars rover mission?\nanswer: The Perseverance Mars rover mission focuses on searching for signs of ancient life on Mars.\nstars: 3\n\ncontext: The Mediterranean diet is a commonly recommended dietary plan that emphasizes fruits, vegetables, whole grains, legumes, lean proteins, and healthy fats. Studies have shown that it offers numerous health benefits, including a reduced risk of heart disease and improved cognitive health.\nquestion: What are the main components of the Mediterranean diet?\nanswer: The Mediterranean diet primarily consists of fruits, vegetables, whole grains, and legumes.\nstars: 4\n\ncontext: The Queen's Royal Castle is a well-known tourist attraction in the United Kingdom. It spans over 500 acres and contains extensive gardens and parks. The castle was built in the 15th century and has been home to generations of royalty.\nquestion: What are the main attractions of the Queen's Royal Castle?\nanswer: The main attractions of the Queen's Royal Castle are its expansive 500-acre grounds, extensive gardens, parks, and the historical castle itself, which dates back to the 15th century and has housed generations of royalty.\nstars: 5\n\nconversation_history: \n \ncontext: \"{\"customer_data\":[{\"id\":\"7\",\"firstName\":\"Jason\",\"lastName\":\"Brown\",\"age\":50,\"email\":\"jasonbrown@example.com\",\"phone\":\"555-222-3333\",\"address\":\"456 Cedar Rd, Anytown USA, 12345\",\"membership\":\"Base\",\"orders\":[{\"id\":27,\"productId\":7,\"quantity\":2,\"total\":200,\"date\":\"3/10/2023\",\"name\":\"CozyNights Sleeping Bag\",\"unitprice\":100,\"category\":\"Sleeping Bags\",\"brand\":\"CozyNights\"}]}],\"citations\":[\"Information about product item_number: 14\\nMountainDream Sleeping Bag, price $130,\\n\\ nRating: 5\\nReview: I've used the MountainDream Sleeping Bag on multiple camping trips, and it has never disappointed me. The insulation is fantastic, providing excellent warmth even in chilly weather. The fabric feels durable, and the zippers glide smoothly. The included stuff sack makes it convenient to pack and carry. Highly satisfied with my purchase!\\n\\nRating: 4\\nReview: The MountainDream Sleeping Bag is a solid choice for backpacking and camping. It's lightweight and compact, making it easy to fit into my backpack. The insulation kept me warm during cold nights, and the hood design provided extra comfort. The only downside is that it's a bit snug for taller individuals. Overall, a reliable sleeping bag for outdoor adventures.\\n\\nFAQ\\n\\nWhat is the temperature rating for the MountainDream Sleeping Bag? The MountainDream Sleeping Bag is rated for temperatures as low as 15�F (-9�C), making it suitable for 4-season use.\\n\"]}\"\nquestion: \"what is the temperature rating of my sleeping bag?\"\nanswer: \"The CozyNights Sleeping Bag is rated for temperatures as low as 15F (-9C), making it suitable for 4-season use.\"\nstars:"
+                  }
+                ],
+                "temperature": 0.0,
+                "top_p": 1.0,
+                "n": 1,
+                "stream": false,
+                "presence_penalty": 0.0,
+                "frequency_penalty": 0.0,
+                "user": "",
+                "max_tokens": 256
+              },
+              "output": {
+                "id": "chatcmpl-99SKqP9eRRrWyXUpPnHkj77i0G35O",
+                "choices": [
+                  {
+                    "finish_reason": "stop",
+                    "index": 0,
+                    "logprobs": null,
+                    "message": {
+                      "content": "1\n\nThe answer provided is incorrect because it gives the temperature rating for the MountainDream Sleeping Bag, not the CozyNights Sleeping Bag, which is the product the customer has purchased according to the context. Therefore, the answer completely lacks relevance to the question asked about the customer's sleeping bag.",
+                      "role": "assistant",
+                      "function_call": null,
+                      "tool_calls": null
+                    },
+                    "content_filter_results": {
+                      "hate": {
+                        "filtered": false,
+                        "severity": "safe"
+                      },
+                      "self_harm": {
+                        "filtered": false,
+                        "severity": "safe"
+                      },
+                      "sexual": {
+                        "filtered": false,
+                        "severity": "safe"
+                      },
+                      "violence": {
+                        "filtered": false,
+                        "severity": "safe"
+                      }
+                    }
+                  }
+                ],
+                "created": 1712040900,
+                "model": "gpt-4",
+                "object": "chat.completion",
+                "system_fingerprint": "fp_2f57f81c11",
+                "usage": {
+                  "completion_tokens": 60,
+                  "prompt_tokens": 1017,
+                  "total_tokens": 1077
+                },
+                "prompt_filter_results": [
+                  {
+                    "prompt_index": 0,
+                    "content_filter_results": {
+                      "hate": {
+                        "filtered": false,
+                        "severity": "safe"
+                      },
+                      "self_harm": {
+                        "filtered": false,
+                        "severity": "safe"
+                      },
+                      "sexual": {
+                        "filtered": false,
+                        "severity": "safe"
+                      },
+                      "violence": {
+                        "filtered": false,
+                        "severity": "safe"
+                      }
+                    }
+                  }
+                ]
+              },
+              "start_time": 1712030099.779508,
+              "end_time": 1712030115.654828,
+              "error": null,
+              "children": [],
+              "node_name": null,
+              "parent_id": "90ace51d-eeec-4ed7-9f76-df0a8c7ce766",
+              "id": "b037711e-fbb3-4fe6-a204-5c7490f3f2fd",
+              "system_metrics": {
+                "completion_tokens": 60,
+                "prompt_tokens": 1017,
+                "total_tokens": 1077
+              }
+            }
+          ],
+          "node_name": "relevance_score",
+          "parent_id": "",
+          "id": "90ace51d-eeec-4ed7-9f76-df0a8c7ce766",
+          "system_metrics": {
+            "completion_tokens": 60,
+            "prompt_tokens": 1017,
+            "total_tokens": 1077
+          }
+        }
+      ],
+      "cached_run_id": null,
+      "cached_flow_run_id": null,
+      "logs": {
+        "stdout": "",
+        "stderr": ""
+      },
+      "system_metrics": {
+        "completion_tokens": 60,
+        "prompt_tokens": 1017,
+        "total_tokens": 1077,
+        "duration": 15.890146
+      },
+      "result": "1\n\nThe answer provided is incorrect because it gives the temperature rating for the MountainDream Sleeping Bag, not the CozyNights Sleeping Bag, which is the product the customer has purchased according to the context. Therefore, the answer completely lacks relevance to the question asked about the customer's sleeping bag."
+    },
+    {
+      "node": "groundedness_concat_scores",
+      "flow_run_id": "3ae574fb-74af-4598-8424-c372d36971b1",
+      "run_id": "3ae574fb-74af-4598-8424-c372d36971b1_groundedness_concat_scores_0",
+      "status": "Completed",
+      "inputs": {
+        "groundesness_score": "3"
+      },
+      "output": {
+        "gpt_groundedness": 3.0,
+        "gpt_groundedness_pass_rate": 0
+      },
+      "metrics": null,
+      "error": null,
+      "parent_run_id": "3ae574fb-74af-4598-8424-c372d36971b1_0",
+      "start_time": "2024-04-02T06:55:01.325705Z",
+      "end_time": "2024-04-02T06:55:01.326713Z",
+      "index": 0,
+      "api_calls": [
+        {
+          "name": "concat_results",
+          "type": "Function",
+          "inputs": {
+            "groundesness_score": "3"
+          },
+          "output": {
+            "gpt_groundedness": 3.0,
+            "gpt_groundedness_pass_rate": 0
+          },
+          "start_time": 1712030101.325705,
+          "end_time": 1712030101.326713,
+          "error": null,
+          "children": [],
+          "node_name": "groundedness_concat_scores",
+          "parent_id": "",
+          "id": "b5c09479-0e7e-453c-9fb0-6305e7a94d6d",
+          "system_metrics": {}
+        }
+      ],
+      "cached_run_id": null,
+      "cached_flow_run_id": null,
+      "logs": {
+        "stdout": "",
+        "stderr": ""
+      },
+      "system_metrics": {
+        "duration": 0.001008
+      },
+      "result": {
+        "gpt_groundedness": 3.0,
+        "gpt_groundedness_pass_rate": 0
+      }
+    },
+    {
+      "node": "coherence_concat_scores",
+      "flow_run_id": "3ae574fb-74af-4598-8424-c372d36971b1",
+      "run_id": "3ae574fb-74af-4598-8424-c372d36971b1_coherence_concat_scores_0",
+      "status": "Completed",
+      "inputs": {
+        "coherence_score": "5"
+      },
+      "output": {
+        "gpt_coherence": 5.0,
+        "gpt_coherence_pass_rate": 1
+      },
+      "metrics": null,
+      "error": null,
+      "parent_run_id": "3ae574fb-74af-4598-8424-c372d36971b1_0",
+      "start_time": "2024-04-02T06:55:01.616938Z",
+      "end_time": "2024-04-02T06:55:01.618135Z",
+      "index": 0,
+      "api_calls": [
+        {
+          "name": "concat_results",
+          "type": "Function",
+          "inputs": {
+            "coherence_score": "5"
+          },
+          "output": {
+            "gpt_coherence": 5.0,
+            "gpt_coherence_pass_rate": 1
+          },
+          "start_time": 1712030101.616938,
+          "end_time": 1712030101.616938,
+          "error": null,
+          "children": [],
+          "node_name": "coherence_concat_scores",
+          "parent_id": "",
+          "id": "2661cca3-0d3b-4707-b04d-65a00a95a980",
+          "system_metrics": {}
+        }
+      ],
+      "cached_run_id": null,
+      "cached_flow_run_id": null,
+      "logs": {
+        "stdout": "",
+        "stderr": ""
+      },
+      "system_metrics": {
+        "duration": 0.001197
+      },
+      "result": {
+        "gpt_coherence": 5.0,
+        "gpt_coherence_pass_rate": 1
+      }
+    },
+    {
+      "node": "fluency_concat_scores",
+      "flow_run_id": "3ae574fb-74af-4598-8424-c372d36971b1",
+      "run_id": "3ae574fb-74af-4598-8424-c372d36971b1_fluency_concat_scores_0",
+      "status": "Completed",
+      "inputs": {
+        "fluency_score": "The answer provided is well-structured, grammatically correct, and each sentence flows smoothly into the next. The information is clearly presented, and the language used is appropriate for the context of the question. Based on the fluency evaluation metric provided:\n\nstars: 5"
+      },
+      "output": {
+        "gpt_fluency": 5.0,
+        "gpt_fluency_pass_rate": 1
+      },
+      "metrics": null,
+      "error": null,
+      "parent_run_id": "3ae574fb-74af-4598-8424-c372d36971b1_0",
+      "start_time": "2024-04-02T06:55:07.394537Z",
+      "end_time": "2024-04-02T06:55:07.396535Z",
+      "index": 0,
+      "api_calls": [
+        {
+          "name": "concat_results",
+          "type": "Function",
+          "inputs": {
+            "fluency_score": "The answer provided is well-structured, grammatically correct, and each sentence flows smoothly into the next. The information is clearly presented, and the language used is appropriate for the context of the question. Based on the fluency evaluation metric provided:\n\nstars: 5"
+          },
+          "output": {
+            "gpt_fluency": 5.0,
+            "gpt_fluency_pass_rate": 1
+          },
+          "start_time": 1712030107.395537,
+          "end_time": 1712030107.396535,
+          "error": null,
+          "children": [],
+          "node_name": "fluency_concat_scores",
+          "parent_id": "",
+          "id": "782af21b-74b1-468e-a9f7-c476868256a0",
+          "system_metrics": {}
+        }
+      ],
+      "cached_run_id": null,
+      "cached_flow_run_id": null,
+      "logs": {
+        "stdout": "",
+        "stderr": ""
+      },
+      "system_metrics": {
+        "duration": 0.001998
+      },
+      "result": {
+        "gpt_fluency": 5.0,
+        "gpt_fluency_pass_rate": 1
+      }
+    },
+    {
+      "node": "relevance_concat_scores",
+      "flow_run_id": "3ae574fb-74af-4598-8424-c372d36971b1",
+      "run_id": "3ae574fb-74af-4598-8424-c372d36971b1_relevance_concat_scores_0",
+      "status": "Completed",
+      "inputs": {
+        "relevance_score": "1\n\nThe answer provided is incorrect because it gives the temperature rating for the MountainDream Sleeping Bag, not the CozyNights Sleeping Bag, which is the product the customer has purchased according to the context. Therefore, the answer completely lacks relevance to the question asked about the customer's sleeping bag."
+      },
+      "output": {
+        "gpt_relevance": 1.0,
+        "gpt_relevance_pass_rate": 0
+      },
+      "metrics": null,
+      "error": null,
+      "parent_run_id": "3ae574fb-74af-4598-8424-c372d36971b1_0",
+      "start_time": "2024-04-02T06:55:15.678825Z",
+      "end_time": "2024-04-02T06:55:15.682302Z",
+      "index": 0,
+      "api_calls": [
+        {
+          "name": "concat_results",
+          "type": "Function",
+          "inputs": {
+            "relevance_score": "1\n\nThe answer provided is incorrect because it gives the temperature rating for the MountainDream Sleeping Bag, not the CozyNights Sleeping Bag, which is the product the customer has purchased according to the context. Therefore, the answer completely lacks relevance to the question asked about the customer's sleeping bag."
+          },
+          "output": {
+            "gpt_relevance": 1.0,
+            "gpt_relevance_pass_rate": 0
+          },
+          "start_time": 1712030115.678825,
+          "end_time": 1712030115.680825,
+          "error": null,
+          "children": [],
+          "node_name": "relevance_concat_scores",
+          "parent_id": "",
+          "id": "626deb48-8ff1-4ae3-b15c-e7f84d15a161",
+          "system_metrics": {}
+        }
+      ],
+      "cached_run_id": null,
+      "cached_flow_run_id": null,
+      "logs": {
+        "stdout": "",
+        "stderr": ""
+      },
+      "system_metrics": {
+        "duration": 0.003477
+      },
+      "result": {
+        "gpt_relevance": 1.0,
+        "gpt_relevance_pass_rate": 0
+      }
+    },
+    {
+      "node": "coherence_aggregate_variants_results",
+      "flow_run_id": "3ae574fb-74af-4598-8424-c372d36971b1",
+      "run_id": "3ae574fb-74af-4598-8424-c372d36971b1_coherence_aggregate_variants_results_reduce",
+      "status": "Completed",
+      "inputs": {
+        "results": [
+          {
+            "gpt_coherence": 5.0,
+            "gpt_coherence_pass_rate": 1
+          }
+        ]
+      },
+      "output": {
+        "gpt_coherence": 5.0,
+        "gpt_coherence_pass_rate": 100.0
+      },
+      "metrics": null,
+      "error": null,
+      "parent_run_id": "3ae574fb-74af-4598-8424-c372d36971b1",
+      "start_time": "2024-04-02T06:55:15.729674Z",
+      "end_time": "2024-04-02T06:55:15.743335Z",
+      "index": null,
+      "api_calls": [
+        {
+          "name": "aggregate_variants_results",
+          "type": "Function",
+          "inputs": {
+            "results": [
+              {
+                "gpt_coherence": 5.0,
+                "gpt_coherence_pass_rate": 1
+              }
+            ]
+          },
+          "output": {
+            "gpt_coherence": 5.0,
+            "gpt_coherence_pass_rate": 100.0
+          },
+          "start_time": 1712030115.729674,
+          "end_time": 1712030115.741317,
+          "error": null,
+          "children": [],
+          "node_name": "coherence_aggregate_variants_results",
+          "parent_id": "",
+          "id": "91bf34e4-1fd8-46f4-8e02-920ecb4d81a3",
+          "system_metrics": {}
+        }
+      ],
+      "cached_run_id": null,
+      "cached_flow_run_id": null,
+      "logs": {
+        "stdout": "",
+        "stderr": ""
+      },
+      "system_metrics": {
+        "duration": 0.013661
+      },
+      "result": {
+        "gpt_coherence": 5.0,
+        "gpt_coherence_pass_rate": 100.0
+      }
+    },
+    {
+      "node": "fluency_aggregate_variants_results",
+      "flow_run_id": "3ae574fb-74af-4598-8424-c372d36971b1",
+      "run_id": "3ae574fb-74af-4598-8424-c372d36971b1_fluency_aggregate_variants_results_reduce",
+      "status": "Completed",
+      "inputs": {
+        "results": [
+          {
+            "gpt_fluency": 5.0,
+            "gpt_fluency_pass_rate": 1
+          }
+        ]
+      },
+      "output": {
+        "gpt_fluency": 5.0,
+        "gpt_fluency_pass_rate": 100.0
+      },
+      "metrics": null,
+      "error": null,
+      "parent_run_id": "3ae574fb-74af-4598-8424-c372d36971b1",
+      "start_time": "2024-04-02T06:55:15.746331Z",
+      "end_time": "2024-04-02T06:55:15.749331Z",
+      "index": null,
+      "api_calls": [
+        {
+          "name": "aggregate_variants_results",
+          "type": "Function",
+          "inputs": {
+            "results": [
+              {
+                "gpt_fluency": 5.0,
+                "gpt_fluency_pass_rate": 1
+              }
+            ]
+          },
+          "output": {
+            "gpt_fluency": 5.0,
+            "gpt_fluency_pass_rate": 100.0
+          },
+          "start_time": 1712030115.746331,
+          "end_time": 1712030115.748332,
+          "error": null,
+          "children": [],
+          "node_name": "fluency_aggregate_variants_results",
+          "parent_id": "",
+          "id": "8423d848-6a2a-4b06-b2d2-badfb5866ef0",
+          "system_metrics": {}
+        }
+      ],
+      "cached_run_id": null,
+      "cached_flow_run_id": null,
+      "logs": {
+        "stdout": "",
+        "stderr": ""
+      },
+      "system_metrics": {
+        "duration": 0.003
+      },
+      "result": {
+        "gpt_fluency": 5.0,
+        "gpt_fluency_pass_rate": 100.0
+      }
+    },
+    {
+      "node": "groundedness_aggregate_variants_results",
+      "flow_run_id": "3ae574fb-74af-4598-8424-c372d36971b1",
+      "run_id": "3ae574fb-74af-4598-8424-c372d36971b1_groundedness_aggregate_variants_results_reduce",
+      "status": "Completed",
+      "inputs": {
+        "results": [
+          {
+            "gpt_groundedness": 3.0,
+            "gpt_groundedness_pass_rate": 0
+          }
+        ]
+      },
+      "output": {
+        "gpt_groundedness": 3.0,
+        "gpt_groundedness_pass_rate": 0.0
+      },
+      "metrics": null,
+      "error": null,
+      "parent_run_id": "3ae574fb-74af-4598-8424-c372d36971b1",
+      "start_time": "2024-04-02T06:55:15.750329Z",
+      "end_time": "2024-04-02T06:55:15.753330Z",
+      "index": null,
+      "api_calls": [
+        {
+          "name": "aggregate_variants_results",
+          "type": "Function",
+          "inputs": {
+            "results": [
+              {
+                "gpt_groundedness": 3.0,
+                "gpt_groundedness_pass_rate": 0
+              }
+            ]
+          },
+          "output": {
+            "gpt_groundedness": 3.0,
+            "gpt_groundedness_pass_rate": 0.0
+          },
+          "start_time": 1712030115.750329,
+          "end_time": 1712030115.752328,
+          "error": null,
+          "children": [],
+          "node_name": "groundedness_aggregate_variants_results",
+          "parent_id": "",
+          "id": "277a97c0-6d90-4ec3-a7d6-256c0b9baa01",
+          "system_metrics": {}
+        }
+      ],
+      "cached_run_id": null,
+      "cached_flow_run_id": null,
+      "logs": {
+        "stdout": "",
+        "stderr": ""
+      },
+      "system_metrics": {
+        "duration": 0.003001
+      },
+      "result": {
+        "gpt_groundedness": 3.0,
+        "gpt_groundedness_pass_rate": 0.0
+      }
+    },
+    {
+      "node": "relevance_aggregate_variants_results",
+      "flow_run_id": "3ae574fb-74af-4598-8424-c372d36971b1",
+      "run_id": "3ae574fb-74af-4598-8424-c372d36971b1_relevance_aggregate_variants_results_reduce",
+      "status": "Completed",
+      "inputs": {
+        "results": [
+          {
+            "gpt_relevance": 1.0,
+            "gpt_relevance_pass_rate": 0
+          }
+        ]
+      },
+      "output": {
+        "gpt_relevance": 1.0,
+        "gpt_relevance_pass_rate": 0.0
+      },
+      "metrics": null,
+      "error": null,
+      "parent_run_id": "3ae574fb-74af-4598-8424-c372d36971b1",
+      "start_time": "2024-04-02T06:55:15.754329Z",
+      "end_time": "2024-04-02T06:55:15.758332Z",
+      "index": null,
+      "api_calls": [
+        {
+          "name": "aggregate_variants_results",
+          "type": "Function",
+          "inputs": {
+            "results": [
+              {
+                "gpt_relevance": 1.0,
+                "gpt_relevance_pass_rate": 0
+              }
+            ]
+          },
+          "output": {
+            "gpt_relevance": 1.0,
+            "gpt_relevance_pass_rate": 0.0
+          },
+          "start_time": 1712030115.755331,
+          "end_time": 1712030115.757333,
+          "error": null,
+          "children": [],
+          "node_name": "relevance_aggregate_variants_results",
+          "parent_id": "",
+          "id": "72afc785-0f1e-488a-abc0-d2d8cd617676",
+          "system_metrics": {}
+        }
+      ],
+      "cached_run_id": null,
+      "cached_flow_run_id": null,
+      "logs": {
+        "stdout": "",
+        "stderr": ""
+      },
+      "system_metrics": {
+        "duration": 0.004003
+      },
+      "result": {
+        "gpt_relevance": 1.0,
+        "gpt_relevance_pass_rate": 0.0
+      }
+    }
+  ]
+}
